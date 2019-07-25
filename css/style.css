@@ -5,23 +5,11 @@ html,body{
 }
 #container
 {
-  height: 100%;
-  width:  100%;
-  margin-left: 0px;
-  margin-right: 0px;
+  padding: 0px;
 }
 #me_circle
 {
-  position: absolute;
-  height: 532px;
+  margin: 0 auto;
   width: 532px;
-}
-.vh_center
-{
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translateY(-50%, -50%);
-  transform: translateY(-50%, -50%);
+  height: 532px;
 }
