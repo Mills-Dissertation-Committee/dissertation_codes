@@ -7,13 +7,15 @@ html,body{
 {
   height: 100%;
   width:  100%;
+  margin-left: 0px;
+  margin-right: 0px;
   text-align: center;
 }
 #me_circle
 {
   height: 532px;
   width: 532px;
-  margin: auto;
+  margin-left: calc(50% - 216px);
 }
 .vertical_center
 {
