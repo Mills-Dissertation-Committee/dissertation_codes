@@ -13,8 +13,19 @@
   background: url("../img/1x/me_circle.png");
   width: 532px;
   height: 532px;
+  /* transition effect */
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
+/* This div appears when a mouse is hovered over it */
 #me_circle:hover
 {
   background: url("../img/1x/hover_me_circle.png");
+  /* transition effect */
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
