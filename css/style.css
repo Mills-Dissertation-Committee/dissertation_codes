@@ -11,9 +11,9 @@
   right: 0px;
   width: 532px;
   height: 532px;
-  background: url("img/me_circle.png") no-repeat;
+  background: url("img/1x/me_circle.png") no-repeat;
 }
 #me_circle:hover
 {
-  background: url("img/hover_me_circle.png") no-repeat;
+  background: url("img/1x/hover_me_circle.png") no-repeat;
 }
