@@ -10,11 +10,15 @@ html,body{
 }
 #me_circle
 {
-  display: block;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-left: auto;
-  margin-right: auto;
   height: 532px;
   width: 532px;
+  margin: auto;
+}
+.vertical_center
+{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
