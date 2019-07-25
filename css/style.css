@@ -10,10 +10,11 @@
   left: 0px;
   right: 0px;
   background: url("img/1x/me_circle.png") no-repeat;
+  background-position: center;
   min-width: 532px;
   min-height: 532px;
 }
 #me_circle:hover
 {
-  background: url("img/1x/hover_me_circle.png") no-repeat;
+  background: url("img/1x/hover_me_circle.png");
 }
