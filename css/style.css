@@ -1,11 +1,11 @@
-html,body{
-  height:100%;
-  width: 100%;
-  margin: 0px 0px 0px 0px
-}
 #me_circle
 {
+  position: absolute;
   margin: auto;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
   width: 532px;
   height: 532px;
 }
