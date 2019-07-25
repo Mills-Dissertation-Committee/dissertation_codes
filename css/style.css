@@ -3,13 +3,6 @@ html,body{
   width: 100%;
   margin: 0px 0px 0px 0px
 }
-#container
-{
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
 #me_circle
 {
   margin: auto;
