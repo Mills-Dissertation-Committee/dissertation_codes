@@ -4,15 +4,14 @@
   /* Higher z-index #s appear on top. */
   z-index: 1;
   position: absolute;
-  display: inline-block;
   margin: auto;
   top: 0px;
   bottom: 0px;
   left: 0px;
   right: 0px;
-  width: 532px;
-  height: 532px;
   background: url("img/1x/me_circle.png") no-repeat;
+  min-width: 532px;
+  min-height: 532px;
 }
 #me_circle:hover
 {
