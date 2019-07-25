@@ -13,6 +13,7 @@ html,body{
 }
 #me_circle
 {
+  position: absolute;
   height: 532px;
   width: 532px;
   margin-left: calc(50% - 216px);
