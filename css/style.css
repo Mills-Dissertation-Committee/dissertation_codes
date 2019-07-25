@@ -5,16 +5,16 @@
   z-index: 1;
   position: absolute;
   margin: auto;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  background: url("img/1x/me_circle.png") no-repeat;
-  background-position: center;
-  min-width: 532px;
-  min-height: 532px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  /* .. is necessary because the stylesheet is in the css folder and the image is not. */
+  background: url("../img/1x/me_circle.png");
+  width: 532px;
+  height: 532px;
 }
 #me_circle:hover
 {
-  background: url("img/1x/hover_me_circle.png");
+  background: url("../img/1x/hover_me_circle.png");
 }
