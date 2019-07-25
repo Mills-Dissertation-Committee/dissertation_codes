@@ -1,5 +1,8 @@
+/* This div is centered absolutely */
 #me_circle
 {
+  /* Higher z-index #s appear on top. */
+  z-index: 1;
   position: absolute;
   margin: auto;
   top: 0px;
@@ -8,4 +11,9 @@
   right: 0px;
   width: 532px;
   height: 532px;
+  background: url("img/me_circle.png") no-repeat;
+}
+#me_circle:hover
+{
+  background: url("img/hover_me_circle.png") no-repeat;
 }
