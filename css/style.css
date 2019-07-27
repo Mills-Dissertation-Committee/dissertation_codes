@@ -29,3 +29,19 @@
   -o-transition: all 1s ease-in-out;
   transition: all 1s ease-in-out;
 }
+
+/* The screen is 2000px or higher in any direction. */
+@media screen and (min-width: 2000px) or (min-height: 2000px)
+{
+  #me_circle
+  {
+    background: url("../img/2x/me_circle.png");
+    width: 1064px;
+    height: 1064px;
+  }
+  /* This div appears when a mouse is hovered over it */
+  #me_circle:hover
+  {
+    background: url("../img/2x/hover_me_circle.png");
+  }
+}
