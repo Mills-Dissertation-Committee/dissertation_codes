@@ -26,10 +26,10 @@
         map: map,
         extent:
           { // autocasts as new Extent()
-          xmin: -106.6460,
-          ymin: 25.8371,
-          xmax: -93.5083,
-          ymax: 36.5007,
+          xmin: 113.753423,
+          ymin: 22.081278,
+          xmax: 114.453802,
+          ymax: 22.577968,
           spatialReference: 4326
         },
         // customize ui padding for legend placement
@@ -126,7 +126,6 @@
           });
 
         map.add(wsPolyLayer);
-
 
               var legend = new Legend({
                     view: view,
@@ -408,7 +407,7 @@
             }
 
           var xhttp = new XMLHttpRequest();
-          var url = "https://api.openweathermap.org/data/2.5/box/city?bbox=-106.6460,25.8371,-93.5083,36.5007,10&appid=533f583f4afc41f1cc7a2ebd44ffc1ac";
+          var url = "https://api.openweathermap.org/data/2.5/box/city?bbox=113.753423,22.081278,114.453802,22.577968,10&appid=533f583f4afc41f1cc7a2ebd44ffc1ac";
 
           xhttp.onreadystatechange = function()
             {
