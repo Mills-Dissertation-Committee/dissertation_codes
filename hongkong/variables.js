@@ -1,9 +1,5 @@
-// 20190821: store information of aws station as a global variable
-var awsStationData = {};
-
 // 20190821: build AWS Station list
-awsStationData.AWS_Station = (function() {
-  var AWS_Station = new Array();
+var AWS_Station = new Array();
 
   AWS_Station[0] = new stationInfo("hko", "22.301944", "114.174297", "", "", { name_E: "Hong Kong Observatory", name_UC: "香港天文台", name_SC: "香港天文台" }, "0");
 
