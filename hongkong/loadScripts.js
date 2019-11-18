@@ -6,7 +6,7 @@ function loadScript(src, callback)
         script.onload = () => callback()               // Adds the onload, <script src='...' onload='...()'>
   }
 
-loadScript('https://js.arcgis.com/4.9/', function() {  // Esri 4.9 API.
+loadScript('https://js.arcgis.com/4.13/', function() {  // Esri 4.9 API.
   loadScript('variables.js', function() {              // Variables.
     loadScript('pointsourceFeatures.js', function() {  // Esri map requirements map/mapview, and other scripts.
 
