@@ -11,7 +11,7 @@ function stationInfo(StationCode, latitude, longitude, Windlatitude, Windlongitu
 // 20190821: build AWS Station list
 var AWS_Station = new Array();
 
-  AWS_Station[0] = ["hko", "22.301944", "114.174297", "", "", "Hong Kong Observatory", "香港天文台", "香港天文台", "0"];
+  AWS_Station[0] = "hko", "22.301944", "114.174297", "", "", "Hong Kong Observatory", "香港天文台", "香港天文台", "0";
 
   AWS_Station[1] = new stationInfo("sha", "22.402478", "114.209881", "", "", { name_E: "Sha Tin", name_UC: "沙田", name_SC: "沙田" }, "0");
 
@@ -137,9 +137,6 @@ var AWS_Station = new Array();
   AWS_Station[58] = new stationInfo("ic2", "22.303056", "114.160278", "", "", { name_E: "International Commerce Centre", name_UC: "環球貿易廣場", name_SC: "环球贸易广场" }, "225");
 
   AWS_Station[59] = new stationInfo("np", "22.294444", "114.199722", "", "", { name_E: "North Point", name_UC: "北角", name_SC: "北角" }, "0");
-
-  return AWS_Station;
-})();
 
 
 // CROSS-REFERENCED VARIABLES
