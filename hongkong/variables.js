@@ -1,3 +1,13 @@
+function stationInfo(StationCode, latitude, longitude, Windlatitude, Windlongitude, StationName, WebcamAngle) {
+  this.StationCode = StationCode;
+  this.latitude = latitude;
+  this.longitude = longitude;
+  this.Windlatitude = Windlatitude;
+  this.Windlongitude = Windlongitude;
+  this.StationName = StationName;
+  this.WebcamAngle = WebcamAngle;
+}
+
 // 20190821: build AWS Station list
 var AWS_Station = new Array();
 
