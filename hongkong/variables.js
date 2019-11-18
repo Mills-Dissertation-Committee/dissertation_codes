@@ -11,7 +11,7 @@ function stationInfo(StationCode, latitude, longitude, Windlatitude, Windlongitu
 // 20190821: build AWS Station list
 var AWS_Station = new Array();
 
-  AWS_Station[0] = new stationInfo("hko", "22.301944", "114.174297", "", "", { name_E: "Hong Kong Observatory", name_UC: "香港天文台", name_SC: "香港天文台" }, "0");
+  AWS_Station[0] = ["hko", "22.301944", "114.174297", "", "", { name_E: "Hong Kong Observatory", name_UC: "香港天文台", name_SC: "香港天文台" }, "0"];
 
   AWS_Station[1] = new stationInfo("sha", "22.402478", "114.209881", "", "", { name_E: "Sha Tin", name_UC: "沙田", name_SC: "沙田" }, "0");
 
