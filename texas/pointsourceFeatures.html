@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Create a FeatureLayer with client side graphics - 4.9</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    #infoDiv {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      max-height: 80%;
+      max-width: 300px;
+      background-color: black;
+      padding: 8px;
+      border-top-right-radius: 5px;
+      color: white;
+      opacity: 0.6;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.9/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.9/"></script>
+
+  <script>
+    // CROSS-REFERENCED VARIABLES
+    var i = 0;
+
+    // POLLUTION POINT-SOURCE VARIABLES
+    var pointSource = [];
+    var psPoint = [];
+    var pLatitude = [];
+    var pLongitude = [];
+    var identifier = [];
+    var account = [];
+    var region = [];
+    var company = [];
+    var site = [];
+    var reportingyear = [];
+    var county = [];
+    var sic = [];
+    var sicdescription = [];
+    // Air pollutant data in tons per year.
+    var cotpy = [];
+    var noxtpy = [];
+    var pbtpy = [];
+    var pm10tpy = [];
+    var pm25tpy = [];
+    var so2tpy = [];
+    var voctpy = [];
+    // This array is used for CSV data imported to the textarea.
+    var Data = [];
+
+    // WEATHER STATION VARIABLES
+    var wsPolygon = [];
+    var wsPolyObj;  // Stores the JSON information after it is parsed.
+    var weatherStation = [];
+    var wsPoint = [];
+    var wLatitude = [];
+    var wLongitude = [];
+    var Name = [];
+    var temperature = [];
+    var pressure = [];
+    var sealevel = [];
+    var groundlevel = [];
+    var humidity = [];
+    var speed = [];
+    var direction = [];
+    var datetime = [];
+
+    // POLLUTION VARIABLES
+    var ptPoint = [];
+    var ptLatitude = [];
+    var ptLongitude = [];
+    // Max numbers are used to standardize data.
+    var coMax = 0;
+    var noxMax = 0;
+    var pbMax = 0;
+    var pm10Max = 0;
+    var pm25Max = 0;
+    var so2Max = 0;
+    var vocMax = 0;
+    // These variables are used for finding the nearest weather station.
+    var nearest;
+    var candidate;
+    var array;           // This cleverly coded value allows for attributes of the nearest to be used.
+    var pti = 0;         // variable i for the pollution transport (used to limit the number of Pollutants on map.)
+    var PollutantLoop;
+    var z;               // Used for NearestVertex Array.
+    var mathdirection;
+
+    require([
+      "esri/views/MapView",
+      "esri/Map",
+      "esri/request",
+      "esri/geometry/geometryEngine",
+      "esri/geometry/SpatialReference",
+      "esri/layers/FeatureLayer",
+      "esri/geometry/Point",
+      "esri/geometry/Polygon",
+      "esri/widgets/Legend",
+      "esri/renderers/ClassBreaksRenderer",
+      "esri/tasks/support/Query"
+    ], function(MapView, Map, esriRequest, geometryEngine, SpatialReference, FeatureLayer, Point, Polygon,
+      Legend, ClassBreaksRenderer, Query) {
+
+      var psLayer, wsLayer, wsPolyLayer, cpLayer, ptLayer;
+
+      /**************************************************
+       * Define the specification for each field to create
+       * in the Point-Source and Pollutant Layers
+       **************************************************/
+
+       var psFields = [
+         {
+           name: "ObjectID",
+           alias: "ObjectID",
+           type: "oid"
+         },
+         {
+           name: "title",
+           alias: "title",
+           type: "string"
+         }, {
+           name: "type",
+           alias: "type",
+           type: "string"
+         }, {
+           name: "pLatitude",
+           alias: "pLatitude",
+           type: "float"
+         }, {
+           name: "pLongitude",
+           alias: "pLongitude",
+           type: "float"
+         }, {
+           name: "identifier",
+           alias: "identifier",
+           type: "string"
+         }, {
+           name: "account",
+           alias: "account",
+           type: "string"
+         }, {
+           name: "region",
+           alias: "region",
+           type: "number"
+         }, {
+           name: "company",
+           alias: "company",
+           type: "string"
+         }, {
+           name: "site",
+           alias: "site",
+           type: "string"
+         }, {
+           name: "county",
+           alias: "county",
+           type: "string"
+         }, {
+           name: "sic",
+           alias: "sic",
+           type: "string"
+         }, {
+           name: "sicdescription",
+           alias: "sicdescription",
+           type: "string"
+         }, {
+           name: "reportingyear",
+           alias: "reportingyear",
+           type: "string"
+         }, {
+           name: "cotpy",
+           alias: "cotpy",
+           type: "float"
+         }, {
+           name: "noxtpy",
+           alias: "noxtpy",
+           type: "float"
+         }, {
+           name: "pbtpy",
+           alias: "pbtpy",
+           type: "float"
+         }, {
+           name: "pm10tpy",
+           alias: "pm10tpy",
+           type: "float"
+         }, {
+           name: "pm25tpy",
+           alias: "pm25tpy",
+           type: "float"
+         }, {
+           name: "so2tpy",
+           alias: "so2tpy",
+           type: "float"
+         }, {
+           name: "voctpy",
+           alias: "voctpy",
+           type: "float"
+         }];
+
+         /**************************************************
+          * Define the specification for each field to create
+          * in the Weather Station layers.
+          **************************************************/
+
+         var wsFields = [
+           {
+             name: "ObjectID",
+             alias: "ObjectID",
+             type: "oid"
+           },
+           {
+             name: "title",
+             alias: "title",
+             type: "string"
+           }, {
+             name: "type",
+             alias: "type",
+             type: "string"
+           }, {
+             name: "wLatitude",
+             alias: "wLatitude",
+             type: "float"
+           }, {
+             name: "wLongitude",
+             alias: "wLongitude",
+             type: "float"
+           }, {
+             name: "Name",
+             alias: "Name",
+             type: "string"
+           }, {
+             name: "temperature",
+             alias: "temperature",
+             type: "float"
+           }, {
+             name: "pressure",
+             alias: "pressure",
+             type: "number"
+           }, {
+             name: "sealevel",
+             alias: "sealevel",
+             type: "float"
+           }, {
+             name: "groundlevel",
+             alias: "groundlevel",
+             type: "float"
+           }, {
+             name: "humidity",
+             alias: "humidity",
+             type: "float"
+           }, {
+             name: "speed",
+             alias: "speed",
+             type: "float"
+           }, {
+             name: "direction",
+             alias: "direction",
+             type: "float"
+           }, {
+             name: "datetime",
+             alias: "datetime",
+             type: "date"
+           }];
+
+      // Set up popup template for the Point-Source layer
+      var psTemplate = {
+        title: "{title}<br>Region: {region}",
+        content: [{
+          type: "fields",
+          fieldInfos: [{
+            fieldName: "noxtpy",
+            label: "noxTPY",
+            visible: true
+          }, {
+            fieldName: "pbtpy",
+            label: "pbTPY",
+            visible: true
+          }, {
+            fieldName: "pm10tpy",
+            label: "pm10TPY",
+            visible: true
+          }, {
+            fieldName: "pm25tpy",
+            label: "pm25TPY",
+            visible: true
+          }, {
+            fieldName: "so2TPY",
+            label: "so2TPY",
+            visible: true
+          }, {
+            fieldName: "voctpy",
+            label: "vocTPY",
+            visible: true,
+          }, {
+            fieldName: "company",
+            label: "Company",
+            visible: true
+          }, {
+            fieldName: "identifier",
+            label: "Identifier",
+            visible: true
+          }, {
+            fieldName: "sic",
+            label: "SIC",
+            visible: true
+          }, {
+            fieldName: "sicdescription",
+            label: "SIC Description",
+            visible: true
+          }, {
+            fieldName: "reportingyear",
+            label: "Reporting Year",
+            visible: true
+          }]
+        }]
+      };
+
+      // Set up popup template for the Weather Station layer
+      var wsTemplate = {
+        title: "{title}",
+        content: [{
+          type: "fields",
+          fieldInfos: [{
+            fieldName: "speed",
+            label: "Wind Speed",
+            visible: true
+          }, {
+            fieldName: "direction",
+            label: "Wind Direction",
+            visible: true
+          }, {
+            fieldName: "temperature",
+            label: "Temperature",
+            visible: true
+          }, {
+            fieldName: "pressure",
+            label: "Pressure",
+            visible: true
+          }, {
+            fieldName: "humidity",
+            label: "Humidity",
+            visible: true
+          }, {
+            fieldName: "datetime",
+            label: "TimeStamp",
+            visible: true
+          }, {
+            fieldName: "sealevel",
+            label: "Sea Level",
+            visible: true,
+          }, {
+            fieldName: "groundlevel",
+            label: "Ground Level",
+            visible: true
+          }]
+        }]
+      };
+
+      /**************************************************
+       * Create the map and view
+       **************************************************/
+
+      var map = new Map({
+        basemap: "dark-gray"
+      });
+
+      // Create MapView
+      var view = new MapView({
+        container: "viewDiv",
+        map: map,
+        extent:
+          { // autocasts as new Extent()
+          xmin: -106.6460,
+          ymin: 25.8371,
+          xmax: -93.5083,
+          ymax: 36.5007,
+          spatialReference: 4326
+        },
+        // customize ui padding for legend placement
+        ui: {
+          padding: {
+            bottom: 15,
+            right: 0
+          }
+        }
+      });
+
+      /**************************************************
+       * Define the renderer for symbolizing point sources.
+       **************************************************/
+
+      var pointsourceRenderer = {
+        type: "simple", // autocasts as new SimpleRenderer()
+        symbol: {
+          type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+          style: "circle",
+          size: 4,
+          color: [180, 180, 180, 1],
+          outline: {
+            width: 1,
+            color: [0, 0, 0, 1],
+            style: "solid"
+          }
+        }
+          };
+
+          /**************************************************
+           * Define the renderer for symbolizing wind station.
+           **************************************************/
+
+          var windstationRenderer = {
+            type: "simple", // autocasts as new SimpleRenderer()
+            symbol: {
+              type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+              style: "circle",
+              size: 2,
+              color: [255, 255, 255, 1],
+              outline: {
+                width: 1,
+                color: [255, 255, 255, 1],
+                style: "solid"
+                }
+              }
+            };
+
+
+            /**************************************************
+             * Define the renderer for symbolizing pollutant particles.
+             **************************************************/
+
+            var pollutantRenderer = {
+              type: "simple", // autocasts as new SimpleRenderer()
+              symbol: {
+                type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+                style: "circle",
+                size: 2,
+                color: [255, 0, 0, 1],
+                outline: {
+                  width: 1,
+                  color: [255, 0, 0, 1],
+                  style: "solid"
+                }
+              },
+              visualVariables: [
+                {
+                  type: "opacity",
+                  field: "noxTPY",
+                  stops: [
+                    {
+                      value: 10,
+                      opacity: 0.1
+                    },
+                    {
+                      value: 6000,
+                      opacity: 1.0
+                    }]
+                }]
+                };
+
+      view.when(function() {
+        // Request the  data when the view resolves
+        getPSdata()
+      });
+
+      // Request the point source data from the CSV.
+      function getPSdata() {
+        readCSV()
+
+        function el(tid)
+        {
+          return document.getElementById(tid);
+        }
+
+        //LA MOD String Version. A tiny ajax library by Dan Davis.
+        //https://www.webdeveloper.com/forum/d/242887-read-server-csv-file-into-javascript-array/6
+        function IO(U, V)
+        {
+          var X = !window.XMLHttpRequest ? new ActiveXObject('Microsoft.XMLHTTP') : new XMLHttpRequest();
+          // Having this as "false" is returning a message to the console.
+          X.open(V ? 'PUT' : 'GET', U, false);
+          X.setRequestHeader('Content-Type', 'csv')
+          X.send(V ? V : '');
+          return X.responseText;
+        }
+
+        function readCSV()
+        {
+            el("PlottingPointSource").value = IO("final_pointsource.csv");
+            createPSgraphics() // then send it to the createGraphics() method
+        }
+      }
+
+      /**************************************************
+       * Create graphics with textarea data
+       **************************************************/
+
+      function createPSgraphics() {
+        // raw CSV data
+        Data = PlottingPointSource.value.split('\n');
+
+        // +2 to skip the header and the empty line at the bottom.
+        while(Data.length > (i + 2))
+        {
+            Line = Data[i+1].split(",");
+
+            identifier[i] = Line[0];
+            pLatitude[i] = Line[1];
+            pLongitude[i] = Line[2];
+            account[i] = Line[3];
+            region[i] = Line[4];
+            company[i] = Line[5];
+            site[i] = Line[6];
+            reportingyear[i] = Line[7];
+            county[i] = Line[8];
+            sic[i] = Line[9];
+            sicdescription[i] = Line[10];
+
+            // Pops value from the end, in order from last variable, and parses as a Float.
+            voctpy[i] = parseFloat(Line.pop());
+            so2tpy[i] = parseFloat(Line.pop());
+            pm25tpy[i] = parseFloat(Line.pop());
+            pm10tpy[i] = parseFloat(Line.pop());
+            pbtpy[i] = parseFloat(Line.pop());
+            noxtpy[i] = parseFloat(Line.pop());
+            cotpy[i] = parseFloat(Line.pop());
+
+            // Assigns new 'Max' value when TRUE.
+            if(voctpy[vocMax] < voctpy[i])
+              {vocMax = i;}
+            if(so2tpy[so2Max] < so2tpy[i])
+              {so2Max = i;}
+            if(pm25tpy[pm25Max] < pm25tpy[i])
+              {pm25Max = i;}
+            if(pm10tpy[pm10Max] < pm10tpy[i])
+              {pm10Max = i;}
+            if(pbtpy[pbMax] < pbtpy[i])
+              {pbMax = i;}
+            if(noxtpy[noxMax] < noxtpy[i])
+              {noxMax = i;}
+            if(cotpy[coMax] < cotpy[i])
+              {coMax = i;}
+
+            psPoint[i] =
+            {
+            geometry: new Point({
+              x: pLongitude[i],
+              y: pLatitude[i],
+              spatialReference: 4326
+            }),
+            // select only the attributes you care about
+            attributes: {
+              title: site[i],
+              ObjectID: parseInt(i),
+              cotpy: cotpy[i],
+              noxtpy: noxtpy[i],
+              pbtpy: pbtpy[i],
+              pm10tpy: pm10tpy[i],
+              pm25tpy: pm25tpy[i],
+              so2tpy: so2tpy[i],
+              voctpy: voctpy[i],
+              company: company[i],
+              identifier: identifier[i],
+              sic: sic[i],
+              sicdescription: sicdescription[i],
+              region: region[i],
+              reportingyear: reportingyear[i]
+            }
+          };
+          i++;
+        }
+        if(Data.length = (i + 2))
+        {
+          createPSlayer()
+        }
+      }
+
+      /**************************************************
+       * Create a FeatureLayer with the Point-Source Array
+       **************************************************/
+
+      function createPSlayer() {
+
+        psLayer = new FeatureLayer({
+          source: psPoint, // autocast as an array of esri/Graphic
+          // create an instance of esri/layers/support/Field for each field object
+          fields: psFields, // This is required when creating a layer from Graphics
+          objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
+          renderer: pointsourceRenderer, // set the visualization on the layer
+          popupTemplate: psTemplate
+        });
+
+        createPollutantLayer()
+      }
+
+      function createPollutantLayer() {
+
+        cpLayer = new FeatureLayer({
+          source: psPoint, // autocast as an array of esri/Graphic
+          // create an instance of esri/layers/support/Field for each field object
+          fields: psFields, // This is required when creating a layer from Graphics
+          objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
+          renderer: pollutantRenderer, // set the visualization on the layer
+          popupTemplate: psTemplate
+        });
+
+        map.add(psLayer);
+        map.add(cpLayer);
+
+        createWSgraphics()
+      }
+
+      function createWSgraphics() {
+
+      var xhttp = new XMLHttpRequest();
+      var url = "https://api.openweathermap.org/data/2.5/box/city?bbox=-106.6460,25.8371,-93.5083,36.5007,10&appid=533f583f4afc41f1cc7a2ebd44ffc1ac";
+
+      xhttp.onreadystatechange = function()
+        {
+        if (this.readyState == 4 && this.status == 200)
+          {
+          var weather = xhttp.responseText
+          var obj = JSON.parse(weather);
+          for (i=0; i < obj.list.length; i++)
+            {
+            wLongitude[i] = obj.list[i].coord.Lon;
+            wLatitude[i] = obj.list[i].coord.Lat;
+            Name[i] = obj.list[i].name;
+            datetime[i] = obj.list[i].dt;
+            temperature[i] = obj.list[i].main.temp;
+            sealevel[i] = obj.list[i].main.sea_level;
+            groundlevel[i] = obj.list[i].main.grnd_level;
+            pressure[i] = obj.list[i].main.pressure;
+            humidity[i] = obj.list[i].main.humidity;
+            speed[i] = obj.list[i].wind.speed;
+            direction[i] = obj.list[i].wind.deg;
+
+            // Defines the locations of the weather stations using coordinates.
+            wsPoint[i] =
+            {
+            geometry: new Point({
+              x: wLongitude[i],
+              y: wLatitude[i],
+              spatialReference: 4326
+            }),
+            // select only the attributes you care about
+            attributes: {
+              title: Name[i],
+              ObjectID: parseInt(i),
+              sealevel: sealevel[i],
+              groundlevel: groundlevel[i],
+              speed: speed[i],
+              direction: direction[i],
+              temperature: temperature[i],
+              pressure: pressure[i],
+              humidity: humidity[i],
+              datetime: new Date().valueOf(datetime[i])
+            }
+          };
+            }
+            if(i == obj.list.length)
+            {
+              // Calls the function to create the weather station point layer.
+              createwsLayer()
+              // The data returned above will be inserted into the Thiessen Polygons.
+              getWSdata()
+            }
+          }
+        };
+      xhttp.open("GET", url, true);
+      xhttp.send();
+      }
+
+      // Request the weather station polygon shape data
+      function getWSdata() {
+        console.log('Getting WS JSON Data!')
+        // Data downloaded from the OpenWeatherMap on 12/4/2018.
+
+        var request = new XMLHttpRequest();
+        request.open("GET", "weatherstationpolygons-f.json", false);
+        request.send(null);
+        wsPolyObj = JSON.parse(request.responseText);
+
+        createPTgraphic()
+      }
+
+      function createwsLayer() {
+        wsLayer = new FeatureLayer({
+          source: wsPoint, // autocast as an array of esri/Graphic
+          // create an instance of esri/layers/support/Field for each field object
+          fields: wsFields, // This is required when creating a layer from Graphics
+          objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
+          popupTemplate: wsTemplate
+        });
+
+        map.add(wsLayer);
+
+        /* Code used for printing data to console for weather station CSV.
+        console.log("Useless,OID,Longitude,Latitude")
+        for(i=0; i<160; i++)
+        {
+          console.log("," + i + "," + wLongitude[i] + "," + wLatitude[i]);
+        }
+        */
+
+        }
+
+      function createPTgraphic()
+      {
+      // Reset i to 0 to start creating the pollution transport.
+      i=0;
+      while(Data.length > (i + 2))
+      {
+        nearest = geometryEngine.nearestVertex(psPoint[i].geometry,wsPoint[0].geometry);
+        for(z = 1; z < 160; z=z+1)
+        {
+        candidate = geometryEngine.nearestVertex(psPoint[i].geometry,wsPoint[z].geometry);
+        if(candidate.distance < nearest.distance)
+        {
+          nearest = candidate;
+          array = z;
+        }
+        }
+        if(direction[array] >= 180)
+        {
+          mathdirection = direction[array] - 180;
+        }
+        else {
+          mathdirection = direction[array] + 180;
+        }
+          ptLatitude[i] = parseFloat(pLatitude[i]) + ((Math.sin(mathdirection * Math.PI / 180) *  speed[array] )/69);
+          ptLongitude[i] = parseFloat(pLongitude[i]) + ((Math.cos(mathdirection * Math.PI / 180) * speed[array] )/69);
+
+          ptPoint[i] =
+          {
+          geometry: new Point({
+            x: ptLongitude[i],
+            y: ptLatitude[i],
+            spatialReference: 4326
+          }),
+          // select only the attributes you care about
+          attributes: {
+            title: site[i],
+            ObjectID: parseInt(i),
+            cotpy: cotpy[i],
+            noxtpy: noxtpy[i],
+            pbtpy: pbtpy[i],
+            pm10tpy: pm10tpy[i],
+            pm25tpy: pm25tpy[i],
+            so2tpy: so2tpy[i],
+            voctpy: voctpy[i],
+            company: company[i],
+            identifier: identifier[i],
+            sic: sic[i],
+            sicdescription: sicdescription[i],
+            region: region[i],
+            reportingyear: reportingyear[i]
+          }
+        };
+        i++;
+      }
+      createPTlayer()
+    }
+
+      function createPTlayer() {
+        pTLayer = new FeatureLayer({
+          source: ptPoint, // autocast as an array of esri/Graphic
+          // create an instance of esri/layers/support/Field for each field object
+          fields: psFields, // This is required when creating a layer from Graphics
+          objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
+          renderer: pollutantRenderer, // set the visualization on the layer
+          popupTemplate: psTemplate
+        });
+
+        map.add(pTLayer);
+        addPTgraphic()
+      }
+
+
+      PollutantLoop = setInterval(addPTgraphic, 5000)
+
+      function addPTgraphic()
+      {
+      i=0;
+      pti++;
+      if(pti>120){
+        clearInterval(PollutantLoop);
+        console.log("120 hours of data loaded!");
+      }
+      while(Data.length > (i + 2))
+      {
+        nearest = geometryEngine.nearestVertex(psPoint[i].geometry,wsPoint[0].geometry);
+        for(z = 1; z < 160; z=z+1)
+        {
+        candidate = geometryEngine.nearestVertex(ptPoint[i].geometry,wsPoint[z].geometry);
+        if(candidate.distance < nearest.distance)
+        {
+          nearest = candidate;
+          array = z;
+        }
+        }
+          if(direction[array] >= 180)
+          {
+            mathdirection = direction[array] - 180;
+          }
+          else {
+            mathdirection = direction[array] + 180;
+          }
+          ptLatitude[i] = parseFloat(ptLatitude[i]) + ((Math.sin(mathdirection * Math.PI / 180) *  speed[array] )/69);
+          ptLongitude[i] = parseFloat(ptLongitude[i]) + ((Math.cos(mathdirection * Math.PI / 180) * speed[array] )/69);
+
+          ptPoint[i] =
+          {
+          geometry: new Point({
+            x: ptLongitude[i],
+            y: ptLatitude[i],
+            spatialReference: 4326
+          }),
+          // select only the attributes you care about
+          attributes: {
+            title: site[i],
+            ObjectID: parseInt(i),
+            cotpy: cotpy[i],
+            noxtpy: noxtpy[i],
+            pbtpy: pbtpy[i],
+            pm10tpy: pm10tpy[i],
+            pm25tpy: pm25tpy[i],
+            so2tpy: so2tpy[i],
+            voctpy: voctpy[i],
+            company: company[i],
+            identifier: identifier[i],
+            sic: sic[i],
+            sicdescription: sicdescription[i],
+            region: region[i],
+            reportingyear: reportingyear[i]
+          }
+        };
+        i++;
+      }
+      addPTlayer()
+    }
+
+      function addPTlayer() {
+        pTLayer = new FeatureLayer({
+          source: ptPoint, // autocast as an array of esri/Graphic
+          // create an instance of esri/layers/support/Field for each field object
+          fields: psFields, // This is required when creating a layer from Graphics
+          objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
+          renderer: pollutantRenderer, // set the visualization on the layer
+          popupTemplate: psTemplate
+        });
+
+        map.add(pTLayer);
+      }
+
+  });
+
+  </script>
+</head>
+
+<body>
+  <textarea cols="225" rows="27" id='PlottingPointSource' style="display: none;"></textarea>
+  <div id="viewDiv"></div>
+  <div id="infoDiv">
+    <h2>Point-Source Pollution<br>Near Real-Time Trajectory</h2>
+    2016 TCEQ Point-Source Data and<br>Open Weather Map API
+  </div>
+</body>
+</html>

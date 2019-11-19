@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Create a FeatureLayer with client side graphics - 4.9</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    #infoDiv {
+      position: absolute;
+      bottom: 15px;
+      left: 0;
+      max-height: 80%;
+      max-width: 300px;
+      background-color: black;
+      padding: 8px;
+      border-top-right-radius: 5px;
+      color: white;
+      opacity: 0.6;
+    }
+
+    .esri-legend__service {
+      background-color: black;
+      border-color: white;
+      color: white;
+      opacity: .9;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.9/esri/css/main.css">
+  <script src="loadScripts.js"></script>
+
+</head>
+
+<body>
+<textarea cols="225" rows="27" id='PlottingPointSource' style="display: none;"></textarea>
+<div id="viewDiv"></div>
+<div id="infoDiv">
+  <h2>Point-Source Pollution<br>Near Real-Time Trajectory</h2>
+  2016 TCEQ Point-Source Data and<br>Open Weather Map API
+</div>
+</body>
+</html>
