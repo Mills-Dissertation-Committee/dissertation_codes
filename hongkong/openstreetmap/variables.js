@@ -3,8 +3,8 @@ var field2=[];
 
 d3.csv("data.csv",function(csv){
             csv.map(function(d){
-                field1.push(d.name);
-                field2.push(+d.value);
+                field1.push(d.mid);
+                field2.push(d.TG_Count);
             })
             console.log("field1",field1);
 console.log("field2",field2);
