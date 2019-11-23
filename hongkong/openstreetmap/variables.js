@@ -1,7 +1,8 @@
-var tear_gas_StationName=[];
+var tear_gas_mid=[];
 var tear_gas_lat=[];
 var tear_gas_lng=[];
 var tear_gas_tg_count=[];
+var tear_gas_date=[];
 
 d3.csv("tear_gas_data.csv",function(d){
                 tear_gas_mid.push(d.mid);
