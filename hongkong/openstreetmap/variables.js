@@ -4,10 +4,11 @@ var tear_gas_lng=[];
 var tear_gas_tg_count=[];
 
 d3.csv("tear_gas_data.csv",function(d){
-                tear_gas_StationName.push(d.StationName);
-                tear_gas_lat.push(d.lat);
-                tear_gas_lng.push(d.lng);
+                tear_gas_mid.push(d.mid);
+                tear_gas_lat.push(d.Lat);
+                tear_gas_lng.push(d.Lng);
                 tear_gas_tg_count.push(d.TG_Count);
+                tear_gas_date.push(d.DateUS)
             });
 
 function stationInfo(StationCode, latitude, longitude, Windlatitude, Windlongitude, StationName, WebcamAngle) {
