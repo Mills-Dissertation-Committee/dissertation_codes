@@ -1,7 +1,7 @@
 var field1=[];
 var field2=[];
 
-d3.csv("data.csv",function(csv){
+d3.csv("tear_gas_data.csv",function(csv){
             csv.map(function(d){
                 field1.push(d.mid);
                 field2.push(d.TG_Count);
