@@ -1,9 +1,13 @@
-var field1=[];
-var field2=[];
+var tear_gas_StationName=[];
+var tear_gas_lat=[];
+var tear_gas_lng=[];
+var tear_gas_tg_count=[];
 
 d3.csv("tear_gas_data.csv",function(d){
-                field1.push(d.mid);
-                field2.push(d.TG_Count);
+                tear_gas_StationName.push(d.StationName);
+                tear_gas_lat.push(d.lat);
+                tear_gas_lng.push(d.lng);
+                tear_gas_tg_count.push(d.TG_Count);
             });
 
 function stationInfo(StationCode, latitude, longitude, Windlatitude, Windlongitude, StationName, WebcamAngle) {
