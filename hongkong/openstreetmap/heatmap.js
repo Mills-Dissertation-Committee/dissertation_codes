@@ -1,4 +1,4 @@
 
-  var heat = L.heatLayer([
+  var heat = L.heatLayer(
     heat_map_variables
-  ], {radius:25}).addTo(mymap);
+  , {radius:25}).addTo(mymap);

@@ -8,10 +8,7 @@ function loadScript(src, callback)
 
   loadScript('variables.js', function() {             // Variables.
     loadScript('map.js', function() {                 // Load the map.
-      loadScript('leaflet-heat.js', function() {     // Leaflet heatmap javascript.
-        loadScript('heatmap.js', function() {
-
+        loadScript('heatmap.js', function() {         // Heatmap Layer.
         })
       })
     })
-  })
