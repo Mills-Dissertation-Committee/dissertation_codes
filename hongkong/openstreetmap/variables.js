@@ -7,14 +7,14 @@ var heat_map_variables=[];
 
 d3.csv("tear_gas_data.csv",function(d){
                 tear_gas_mid.push(d.mid);
-                tear_gas_lat.push(d.Lat);
-                tear_gas_lng.push(d.Lng);
+                tear_gas_lat.push(parseFloat(d.Lat));
+                tear_gas_lng.push(parseFloat(d.Lng));
                 tear_gas_tg_count.push(d.TG_Count);
                 tear_gas_date.push(d.DateUS);
                 if (d.TG_Count == 1){
-                heat_map_variables.push([d.Lat,d.Lng,.25]); // lat, lng, intensity
+                heat_map_variables.push([parseFloat(d.Lat),parseFloat(d.Lng),.25]); // lat, lng, intensity
                 } else {
-                heat_map_variables.push([d.Lat,d.Lng,(1 - (1 / d.TG_Count))]); // lat, lng, intensity
+                heat_map_variables.push([parseFloat(d.Lat),parseFloat(d.Lng),(1 - (1 / d.TG_Count))]); // lat, lng, intensity
                 }
             });
 
