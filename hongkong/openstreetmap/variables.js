@@ -3,6 +3,7 @@ var tear_gas_lat=[];
 var tear_gas_lng=[];
 var tear_gas_tg_count=[];
 var tear_gas_date=[];
+var heat_map_variables=[];
 
 d3.csv("tear_gas_data.csv",function(d){
                 tear_gas_mid.push(d.mid);
@@ -10,6 +11,7 @@ d3.csv("tear_gas_data.csv",function(d){
                 tear_gas_lng.push(d.Lng);
                 tear_gas_tg_count.push(d.TG_Count);
                 tear_gas_date.push(d.DateUS)
+                heat_map_variables.push([d.Lat,d.Lng, (1 - (1 / d.TG_Count))]);  // lat, lng, intensity
             });
 
 function stationInfo(StationCode, latitude, longitude, Windlatitude, Windlongitude, StationName, WebcamAngle) {
