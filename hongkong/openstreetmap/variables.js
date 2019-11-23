@@ -1,17 +1,10 @@
 var field1=[];
 var field2=[];
 
-d3.csv("tear_gas_data.csv",function(csv){
-            csv.map(function(d){
+d3.csv("tear_gas_data.csv",function(d){
                 field1.push(d.mid);
                 field2.push(d.TG_Count);
-            })
-            console.log("field1",field1);
-console.log("field2",field2);
-console.log("field1",field1[0]);
-        });
-
-
+            });
 
 function stationInfo(StationCode, latitude, longitude, Windlatitude, Windlongitude, StationName, WebcamAngle) {
   this.StationCode = StationCode;
