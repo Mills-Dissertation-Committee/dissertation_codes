@@ -13,31 +13,10 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
-    <script src="variables.js"></script>
+    <script src="loadScript.js"></script>
 </head>
 <body>
 <div id="mapid" style="width: 600px; height: 400px;"></div>
-  <script>
-    var hong_kong_center = [22.3693,114.1694];
 
-  	var mymap = L.map('mapid').setView(hong_kong_center, 10);
-
-  	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-  		maxZoom: 18,
-  		id: 'mapbox.streets'
-  	}).addTo(mymap);
-
-    for(i = 0; i < AWS_Station.length; i++)
-    {
-      L.marker([parseFloat(AWS_Station[i].latitude),parseFloat(AWS_Station[i].longitude)]).addTo(mymap)
-      .bindPopup("<b>" + AWS_Station[i].StationName.name_UC + "</b><br />Weather Data Here.");
-    }
-
-    for(i = 0; i < tear_gas_lat.length; i++)
-    {
-      L.marker([parseFloat(tear_gas_lat[i]),parseFloat(tear_gas_lng[i])]).addTo(mymap)
-      .bindPopup("<b>" + tear_gas_mid + "</b><br />Tear Gas Data Here.");
-    }
-  </script>
 </body>
 </html>
