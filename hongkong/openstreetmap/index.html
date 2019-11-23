@@ -32,6 +32,12 @@
       L.marker([parseFloat(AWS_Station[i].latitude),parseFloat(AWS_Station[i].longitude)]).addTo(mymap)
       .bindPopup("<b>" + AWS_Station[i].StationName.name_UC + "</b><br />Weather Data Here.");
     }
+
+    for(i = 0; i < tear_gas_lat.length; i++)
+    {
+      L.marker([parseFloat(tear_gas_lat[i]),parseFloat(tear_gas_lng[i])]).addTo(mymap)
+      .bindPopup("<b>" + tear_gas_mid + "</b><br />Tear Gas Data Here.");
+    }
   </script>
 </body>
 </html>
