@@ -10,7 +10,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 for(i = 0; i < tear_gas_lat.length; i++)
 {
   L.marker([parseFloat(tear_gas_lat[i]),parseFloat(tear_gas_lng[i])]).addTo(mymap)
-  .bindPopup("<b>" + tear_gas_mid + "</b><br />Tear Gas Data Here.");
+  .bindPopup("<b>" + tear_gas_mid[i] + "</b><br />Tear Gas Data Here.");
 }
 
 for(i = 0; i < AWS_Station.length; i++)
