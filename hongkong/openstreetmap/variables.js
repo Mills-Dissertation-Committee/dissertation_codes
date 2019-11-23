@@ -1,3 +1,5 @@
+tear_gas = d3.csv("tear_gas_data.csv")
+
 function stationInfo(StationCode, latitude, longitude, Windlatitude, Windlongitude, StationName, WebcamAngle) {
   this.StationCode = StationCode;
   this.latitude = latitude;

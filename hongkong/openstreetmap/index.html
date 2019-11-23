@@ -18,11 +18,7 @@
 <body>
 <div id="mapid" style="width: 600px; height: 400px;"></div>
   <script>
-    d3.csv("tear_gas_data.csv", function(data){
-        console.log(data)
-    });
-
-    hong_kong_center = [22.3693,114.1694];
+    var hong_kong_center = [22.3693,114.1694];
 
   	var mymap = L.map('mapid').setView(hong_kong_center, 10);
 
