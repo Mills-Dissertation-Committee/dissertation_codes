@@ -15,9 +15,11 @@ body
   left: 0;
   right: 0;
   /* .. is necessary because the stylesheet is in the css folder and the image is not. */
-  background: url("../img/1x/me_circle.png");
+  background: url("../img/1x/me.png");
   width: 532px;
   height: 532px;
+  /* Makes the image a circle. */
+  border-radius: 50%;
   /* transition effect */
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
@@ -30,7 +32,9 @@ body
 /* This div is modified as follows when the mouse hovers over it. */
 #me_circle:hover
 {
-  background: url("../img/1x/hover_me_circle.png");
+  background: url("../img/1x/hover_me.png");
+  /* Makes the image a circle. */
+  border-radius: 50%;
   /* transition effect */
   -webkit-transition: all 1s ease-in-out;
   -moz-transition: all 1s ease-in-out;
@@ -60,16 +64,20 @@ body
 {
   #me_circle
   {
-    background: url("../img/2x/me_circle@2x.png");
+    background: url("../img/2x/me@2x.png");
     width: 1064px;
     height: 1064px;
+    /* Makes the image a circle. */
+    border-radius: 50%;
     /* Adds a rotation effect on transition. */
     transform: rotate(732deg);
   }
   /* This div is modified as follows when the mouse hovers over it. */
   #me_circle:hover
   {
-    background: url("../img/2x/hover_me_circle@2x.png");
+    background: url("../img/2x/hover_me@2x.png");
+    /* Makes the image a circle. */
+    border-radius: 50%;
   }
 }
 
@@ -78,16 +86,20 @@ body
 {
   #me_circle
   {
-    background: url("../img/0.75x/me_circle@0.75x.png");
+    background: url("../img/0.75x/me@0.75x.png");
     width: 399px;
     height: 399px;
+    /* Makes the image a circle. */
+    border-radius: 50%;
     /* Adds a rotation effect on transition. */
     transform: rotate(12deg);
   }
   /* This div is modified as follows when the mouse hovers over it. */
   #me_circle:hover
   {
-    background: url("../img/0.75x/hover_me_circle@0.75x.png");
+    background: url("../img/0.75x/hover_me@0.75x.png");
+    /* Makes the image a circle. */
+    border-radius: 50%;
   }
 }
 
@@ -96,16 +108,20 @@ body
 {
   #me_circle
   {
-    background: url("../img/0.5x/me_circle@0.5x.png");
+    background: url("../img/0.5x/me@0.5x.png");
     width: 266px;
     height: 266px;
+    /* Makes the image a circle. */
+    border-radius: 50%;
     /* Adds a rotation effect on transition. */
     transform: rotate(-348deg);
   }
   /* This div is modified as follows when the mouse hovers over it. */
   #me_circle:hover
   {
-    background: url("../img/0.5x/hover_me_circle@0.5x.png");
+    background: url("../img/0.5x/hover_me@0.5x.png");
+    /* Makes the image a circle. */
+    border-radius: 50%;
   }
 }
 
