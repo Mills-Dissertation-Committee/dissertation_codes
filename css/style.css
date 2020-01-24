@@ -1,8 +1,65 @@
-body
-{
-  /* No scrollbar on this website. */
-  overflow: hidden;
+/* The background. */
+html, body{
+	width:100%;
+	height:100%;
+	padding:0px;
+	margin:0px;
+  /* No Scroll bar */
+	overflow: hidden;
+	background: #191d1e; /* Old browsers */
+	background: -moz-linear-gradient(0deg,  #191d1e 50%, #283139 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right bottom, color-stop(50%,#191d1e), color-stop(100%,#283139)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(0deg,  #191d1e 50%,#283139 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(0deg,  #191d1e 50%,#283139 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(0deg,  #191d1e 50%,#283139 100%); /* IE10+ */
+	background: linear-gradient(0deg,  #191d1e 50%,#283139 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#191d1e', endColorstr='#283139',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	background-attachment: fixed
 }
+
+#projector {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width:100%;
+  height:100%;
+}
+
+.center-div {
+	width:580px;
+    height:374px;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left: -290px;
+    margin-top:  -187px;
+}
+
+#preloaderDiv
+{
+	position:absolute;
+	left:50%;
+    top:50%;
+    margin-left: -27px;
+    margin-top:  -27px;
+}
+
+#logo{
+	opacity:0;
+    filter: alpha(opacity=0);
+}
+
+#date2014
+{
+	position:absolute;
+	padding-left: 210px;
+	padding-top:15px;
+	opacity:0;
+	top:303px;
+	left:0;
+    filter: alpha(opacity=0);
+}
+
 /* This div is centered absolutely */
 #me_circle
 {
@@ -16,6 +73,8 @@ body
   right: 0;
   /* .. is necessary because the stylesheet is in the css folder and the image is not. */
   background: url("../img/1x/me.png");
+  opacity: .5;
+  box-shadow: 5px 10px 8px #888888;
   width: 532px;
   height: 532px;
   /* Makes the image a circle. */
@@ -42,20 +101,6 @@ body
   transition: all 1s ease-in-out;
 }
 
-#line
-{
-  /* Higher z-index #s appear on top. */
-  z-index: 40;
-  position: absolute;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 1px;
-}
-
 /* Responsive actions are triggered by conditional statements. */
 /* The conditional statements query the users screen size. */
 /* Images contain self-explanatory naming conventions. */
@@ -65,6 +110,8 @@ body
   #me_circle
   {
     background: url("../img/2x/me@2x.png");
+    opacity: .5;
+    box-shadow: 5px 10px 8px #888888;
     width: 1064px;
     height: 1064px;
     /* Makes the image a circle. */
@@ -87,6 +134,8 @@ body
   #me_circle
   {
     background: url("../img/0.75x/me@0.75x.png");
+    opacity: .5;
+    box-shadow: 5px 10px 8px #888888;
     width: 399px;
     height: 399px;
     /* Makes the image a circle. */
@@ -109,6 +158,8 @@ body
   #me_circle
   {
     background: url("../img/0.5x/me@0.5x.png");
+    opacity: .5;
+    box-shadow: 5px 10px 8px #888888;
     width: 266px;
     height: 266px;
     /* Makes the image a circle. */
@@ -128,11 +179,5 @@ body
 /* This checks the screen orientation to determine the appropriate layout. */
 @media (orientation: landscape)
 {
-  #line
-  {
-    /* Rotates the line. */
-    transform: rotate(90deg);
-    /* Change the width to the height value. */
-    width: 100vh;
-  }
+  /* Landscape layout goes here. */
 }
