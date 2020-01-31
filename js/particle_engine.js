@@ -200,7 +200,7 @@ function weightedRange(to, from, decimalPlaces, weightedRange, weightStrength)
 
 var particles
 (function(){
-  particles = new ParticleEngine('projector');
+  particles = new ParticleEngine('background');
   createjs.Ticker.addEventListener("tick", updateCanvas);
   window.addEventListener('resize', resizeCanvas, false);
 

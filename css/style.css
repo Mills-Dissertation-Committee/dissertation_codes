@@ -60,23 +60,58 @@ html, body{
     filter: alpha(opacity=0);
 }
 
+/* Sizes the images and prevents the images from being larger than the screen.*/
+@media (orientation: landscape) {
+  #circle_me
+  {
+    height: 40vh;
+    width: 40vh;
+  }
+  .me
+  {
+    max-height: 90vh;
+    max-width: 90vh;
+  }
+  .icon
+  {
+    max-height: 90vh;
+    max-width: 90vh;
+  }
+}
+
+@media (orientation: portrait) {
+  #circle_me
+  {
+    height: 40vw;
+    width: 40vw;
+  }
+  .me
+  {
+    max-height: 90vh;
+    max-width: 90vh;
+  }
+  .icon
+  {
+    max-height: 90vw;
+    max-width: 90vw;
+  }
+}
+
 /* This div is centered absolutely */
-#me_circle
+#circle_me
 {
   /* Higher z-index #s appear on top. */
-  z-index: 50;
+  z-index: 55;
   position: absolute;
-  margin: auto;
+  /* .. is necessary because the stylesheet is in the css folder and the image is not. */
+  background: url("../img/2x/me@2x.png");
+  background-size: 100%;
+  box-shadow: 5px 10px 8px #888888;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  /* .. is necessary because the stylesheet is in the css folder and the image is not. */
-  background: url("../img/1x/me.png");
-  opacity: .5;
-  box-shadow: 5px 10px 8px #888888;
-  width: 532px;
-  height: 532px;
+  margin: auto;
   /* Makes the image a circle. */
   border-radius: 50%;
   border-color: #6ac6e8;
@@ -87,17 +122,6 @@ html, body{
   transition: all 1s ease-in-out;
   /* Adds a rotation effect at the beginning, and straightens up my picture. */
   transform: rotate(372deg);
-}
-
-/* This div is modified as follows when the mouse hovers over it. */
-#me_circle:hover
-{
-  background: url("../img/1x/hover_me.png");
-  /* transition effect */
-  -webkit-transition: all 1s ease-in-out;
-  -moz-transition: all 1s ease-in-out;
-  -o-transition: all 1s ease-in-out;
-  transition: all 1s ease-in-out;
 }
 
 @keyframes float {
@@ -115,15 +139,12 @@ html, body{
 	}
 }
 
-#clipboard
+#icon_clipboard
 {
-  z-index: 51;
+  z-index: 60;
   position: absolute;
-  margin: auto;
-  top: 0;
-  bottom: 50%;
-  left: 0;
-  right: 65%;
+  margin-top: 10vh;
+  margin-left: 10vw;
   background: url("../img/1x/clipboard.png");
   background-size: 100% 100%;
   width: 20vw;
@@ -142,7 +163,7 @@ html, body{
   transition: all 1s ease-in-out;
 }
 
-#clipboard:hover
+#icon_clipboard:hover
 {
   background: url("../img/1x/clipboard_hover.png");
   background-size: 100% 100%;
@@ -154,65 +175,20 @@ html, body{
   transition: all 1s ease-in-out;
 }
 
-/* Responsive actions are triggered by conditional statements. */
-/* The conditional statements query the users screen size. */
-/* Images contain self-explanatory naming conventions. */
-/* The screen is 2400px or wider and the height is 1064px or higher. */
-@media screen and (min-width: 2400px) and (min-height: 1064px)
+#cv
 {
-  #me_circle
-  {
-    background: url("../img/2x/me@2x.png");
-    width: 1064px;
-    height: 1064px;
-    /* Adds a rotation effect on transition. */
-    transform: rotate(732deg);
-  }
-  /* This div is modified as follows when the mouse hovers over it. */
-  #me_circle:hover
-  {
-    background: url("../img/2x/hover_me@2x.png");
-  }
-}
-
-/* The screen is 1064px or less wide and 531px or less high. */
-@media screen and (max-width: 1064px), (max-height: 531px)
-{
-  #me_circle
-  {
-    background: url("../img/0.75x/me@0.75x.png");
-    width: 399px;
-    height: 399px;
-    /* Adds a rotation effect on transition. */
-    transform: rotate(12deg);
-  }
-  /* This div is modified as follows when the mouse hovers over it. */
-  #me_circle:hover
-  {
-    background: url("../img/0.75x/hover_me@0.75x.png");
-  }
-}
-
-/* The screen is 798px or less wide and 398px or less high. */
-@media screen and (max-width: 798px), (max-height: 398px)
-{
-  #me_circle
-  {
-    background: url("../img/0.5x/me@0.5x.png");
-    width: 266px;
-    height: 266px;
-    /* Adds a rotation effect on transition. */
-    transform: rotate(-348deg);
-  }
-  /* This div is modified as follows when the mouse hovers over it. */
-  #me_circle:hover
-  {
-    background: url("../img/0.5x/hover_me@0.5x.png");
-  }
-}
-
-/* This checks the screen orientation to determine the appropriate layout. */
-@media (orientation: landscape)
-{
-  /* Landscape layout goes here. */
+  z-index: 50;
+  position: absolute;
+  margin: auto;
+  top: 3vh;
+  bottom: 3vh;
+  left: 3vw;
+  right: 3vw;
+  background-color: white;
+  opacity: 0;
+  /* transition effect */
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
 }
