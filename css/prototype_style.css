@@ -35,9 +35,6 @@ html, body{
   width: 1vw;
   margin-top: 50vh;
   margin-left: 50vw;
-  /* '..' is necessary because the stylesheet is in the css folder and the image is not. */
-  background: url("../img/2x/me@2x.png");
-  background-size: 100%;
   box-shadow: 5px 10px 8px #888888;
   /* Makes the div a circle. */
   border-radius: 50%;
@@ -100,60 +97,4 @@ html, body{
 	-moz-transition: all 1s ease-in-out;
 	-o-transition: all 1s ease-in-out;
 	transition: all 1s ease-in-out;
-}
-
-#circle_one
-{
-	background: url("../img/1x/clipboard.png");
-	background-size: 100%;
-	margin-top: 50vh;
-	margin-left: 50vw;
-}
-
-#circle_one:hover
-{
-  background: url("../img/1x/clipboard_hover.png");
-	background-size: 100%;
-}
-
-#circle_two
-{
-  background: url("../img/1x/clipboard.png");
-	background-size: 100%;
-	margin-top: 50vh;
-	margin-left: 50vw;
-}
-
-#circle_two:hover
-{
-  background: url("../img/1x/clipboard_hover.png");
-	background-size: 100%;
-}
-
-#circle_three
-{
-  background: url("../img/1x/clipboard.png");
-	background-size: 100%;
-	margin-top: 50vh;
-	margin-left: 50vw;
-}
-
-#circle_three:hover
-{
-  background: url("../img/1x/clipboard_hover.png");
-	background-size: 100%;
-}
-
-#circle_four
-{
-  background: url("../img/1x/clipboard.png");
-	background-size: 100%;
-	margin-top: 50vh;
-	margin-left: 50vw;
-}
-
-#circle_four:hover
-{
-  background: url("../img/1x/clipboard_hover.png");
-	background-size: 100%;
 }
