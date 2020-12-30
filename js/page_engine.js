@@ -2,22 +2,30 @@
 var page_layout = false;
 
 // The number of divs above in the icon class.
-var icons = 10;
+var icons = 2;
 
+// The subject matter of each circle.
+var subject = ["resume","research"]
+
+// Open a stylesheet to write in.
 document.write("<style>");
+
+// The image in the center circle.
 document.write("#circle_center { background: url('./img/2x/me@2x.png'); background-size: 100%; }");
+
+// For loop to create as many icons as listed above.
 for(i = 0; i < icons; i++)
 {
   document.write("#circle_" + i +
   "{" +
-  	"background: url('./img/1x/clipboard.png');" +
+  	"background: url('./img/1x/" + subject[i] + ".png');" +
   	"background-size: 100%;" +
   	"margin-top: 50vh;" +
   	"margin-left: 50vw;" +
   "}" +
   "#circle_" + i + ":hover" +
   "{" +
-    "background: url('./img/1x/clipboard_hover.png');" +
+    "background: url('./img/1x/hover_" + subject[i] + ".png');" +
   	"background-size: 100%;" +
   "}"
   );
