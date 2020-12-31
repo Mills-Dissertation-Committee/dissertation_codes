@@ -1,8 +1,8 @@
-// Boolean variable that keeps track of current page layout.
-var page_layout = false;
+// Variable that keeps track of current page layout.
+var page_layout = "default";
 
 // The number of divs above in the icon class.
-var icons = 2;
+var icons = 6;
 
 // The subject matter of each circle.
 var subject = ["resume","research"]
@@ -30,6 +30,8 @@ for(i = 0; i < icons; i++)
   "}"
   );
 }
+
+// Close the stylesheet.
 document.write("</style>");
 
 // Create the initial CSS for the icons.
@@ -159,39 +161,58 @@ function fit_center_circle() {
   height = $(window).height();
   width = $(window).width();
 
-  // Sets the height and width of the center image and icons based on orientation.
-  if (height > width)
+  // Clicking the circle_center div takes the page back to default layout.
+  if (page_layout == "circle_center")
   {
-    circle_diameter = height / (icons + 1);
-    set_height_width();
-  } else {
-    circle_diameter = width / (icons + 1);
-    set_height_width();
+    page_layout = "default";
   }
-  // If the circle_diameter exceeds the screen width, limits size to screen width.
-  if (circle_diameter > width)
+
+  // Resizes the default page layout.
+  if (page_layout == "default")
   {
-    circle_diameter = width;
-    circle_radius = circle_diameter / 2;
-    set_height_width();
-    set_location();
-  // If the circle_diameter exceeds the screen height, limits size to screen height.
-  } else if (circle_diameter > height) {
-    circle_diameter = height;
-    circle_radius = circle_diameter / 2;
-    set_height_width();
-    set_location();
-  // Image located in center, icons located in four corners.
-  } else {
-    circle_radius = circle_diameter / 2;
-    set_location();
+    // Sets the height and width of the center image and icons based on orientation.
+    if (height > width)
+    {
+      circle_diameter = height / (icons + 1);
+      set_height_width();
+    } else {
+      circle_diameter = width / (icons + 1);
+      set_height_width();
+    }
+    // If the circle_diameter exceeds the screen width, limits size to screen width.
+    if (circle_diameter > width)
+    {
+      circle_diameter = width;
+      circle_radius = circle_diameter / 2;
+      set_height_width();
+      set_location();
+    // If the circle_diameter exceeds the screen height, limits size to screen height.
+    } else if (circle_diameter > height) {
+      circle_diameter = height;
+      circle_radius = circle_diameter / 2;
+      set_height_width();
+      set_location();
+    // Image located in center, icons located in four corners.
+    } else {
+      circle_radius = circle_diameter / 2;
+      set_location();
+    }
   }
 }
 
 // Sets the initial size and location for all elements.
 fit_center_circle();
 
+// Listens for icons to be clicked to change click event.
+document.addEventListener('click', function(e) {
+  if (e.target.id != "background")
+  {
+    page_layout = e.target.id;
+    console.log(page_layout);
+  }
+}, false);
+
 // Function checks for window resize and adjusts accordingly.
-$(window).resize(function () {
-  fit_center_circle();
-});
+  $(window).resize(function () {
+    fit_center_circle();
+  });
