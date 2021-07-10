@@ -5,7 +5,7 @@ var page_layout = "default";
 var icons = 6;
 
 // The subject matter of each circle.
-var subject = ["resume","research"]
+var subject = ["resume","research","dogecoin"]
 
 // Open a stylesheet to write in.
 document.write("<style>");
