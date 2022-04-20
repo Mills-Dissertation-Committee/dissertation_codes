@@ -69,22 +69,22 @@
             {
                 Line = Data[i+1].split(",");
 
-                epa_name[i] = Line[0];
-                epa_latitude[i] = Line[1];
-                epa_longitude[i] = Line[2];
-                epa_scale[i] = Line[3];
+                epaName[i] = Line[0];
+                epaLatitude[i] = Line[1];
+                epaLongitude[i] = Line[2];
+                epaScale[i] = Line[3];
 
                 epaPoint[i] =
                 {
                 geometry: new Point({
-                  x: epa_longitude[i],
-                  y: epa_latitude[i],
+                  x: epaLongitude[i],
+                  y: epaLatitude[i],
                   spatialReference: 4326
                 }),
                 // select only the attributes you care about
                 attributes: {
-                  title: epa_name[i],
-                  scale: epa_scale[i]
+                  title: epaName[i],
+                  scale: epaScale[i]
                 }
               };
               i++;
