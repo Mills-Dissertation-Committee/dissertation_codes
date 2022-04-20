@@ -26,11 +26,11 @@ var epaLayer;
    }, {
      name: "epaLatitude",
      alias: "epaLatitude",
-     type: "float"
+     type: "double"
    }, {
      name: "epaLongitude",
      alias: "epaLongitude",
-     type: "float"
+     type: "double"
    }, {
      name: "epaScale",
      alias: "epaScale",
