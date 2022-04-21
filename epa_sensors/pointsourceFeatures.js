@@ -9,7 +9,7 @@
       "esri/geometry/Polygon",
       "esri/widgets/Legend",
       "esri/renderers/ClassBreaksRenderer",
-      "esri/tasks/support/Query"
+      "esri/rest/support/Query"
     ], function(MapView, Map, esriRequest, geometryEngine, SpatialReference, FeatureLayer, Point, Polygon,
       Legend, ClassBreaksRenderer, Query) {
 
@@ -17,7 +17,7 @@
        * Create the map and view
        **************************************************/
       var map = new Map({
-        basemap: "dark-gray"
+        basemap: "dark-gray-vector"
       });
 
       // Create MapView
