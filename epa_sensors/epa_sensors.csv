@@ -1,5 +1,4 @@
-NAME,LATITUDE,LONGITUDE,SCALE
-EPA Sensor 1,33.1223258,-96.74291022,Neighborhood Scale
-EPA Sensor 2,31.62447624,-95.56900299,Neighborhood Scale
-EPA Sensor 3,31.8259553,-95.8316746,Microscale
-EPA Sensor 4,32.43309086,-102.7974886,Neighborhood Scale
+"epa_name","epa_latitude","epa_longitude","epa_scale","epa_scale_def","epa_monitoring_obj"
+"Austin-Round Rock, TX",30.35386,-97.69166,"MICROSCALE","0 M TO 100 M","MAX PRECURSOR EMISSIONS IMPACT"
+"Austin-Round Rock, TX",30.263204,-97.712891,"NEIGHBORHOOD","500 M TO 4KM","POPULATION EXPOSURE"
+"Austin-Round Rock, TX",30.354944,-97.761803,"NEIGHBORHOOD","500 M TO 4KM","POPULATION EXPOSURE"

@@ -7,6 +7,8 @@ var epaPoint = [];
 var epaLatitude = [];
 var epaLongitude = [];
 var epaScale = [];
+var epaScaleDef = [];
+var epaMonitorObj = [];
 
 // This array is used for CSV data imported to the textarea.
 var Data = [];

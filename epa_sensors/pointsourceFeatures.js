@@ -73,6 +73,8 @@
                 epaLatitude[i] = Line[1];
                 epaLongitude[i] = Line[2];
                 epaScale[i] = Line[3];
+                epaScaleDef[i] = Line[4];
+                epaMonitorObj[i] = Line[5];
 
                 epaPoint[i] =
                 {
