@@ -1,7 +1,9 @@
 require(["esri/Map", "esri/views/SceneView", "esri/layers/Layer", "esri/layers/GraphicsLayer", "esri/Graphic"], (
   Map,
   SceneView,
-  Layer
+  Layer,
+  GraphicsLayer,
+  Graphic
 ) => {
   const map = new Map({
     basemap: "gray-vector"
