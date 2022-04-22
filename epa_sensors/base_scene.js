@@ -20,6 +20,7 @@ require(["esri/Map", "esri/views/SceneView", "esri/layers/Layer"], (
    *
    *
    *************************************************/
+
    const counties_renderer = {
      type: "simple-fill",
      color: [227, 139, 79, 0.8], // Orange, opacity 80%
@@ -33,9 +34,26 @@ require(["esri/Map", "esri/views/SceneView", "esri/layers/Layer"], (
    // points to the states layer in a service storing U.S. census data
    const geojsonlayer = new GeoJSONLayer({
      url: "geojson_files/region_11_counties.geojson",
-     renderer: counties_renderer
    });
-   map.add(geojsonlayer);  // adds the layer to the map
+
+   const fillSymbol = {
+      type: "simple-fill", // autocasts as new SimpleFillSymbol()
+      color: [227, 139, 79, 0.8],
+      outline: {
+        // autocasts as new SimpleLineSymbol()
+        color: [255, 255, 255],
+        width: 2
+      }
+    };
+
+    const polygonGraphic = new Graphic({
+      geometry: geojsonlayer,
+      symbol: fillSymbol
+    });
+
+    graphicsLayer.add(polygonGraphic);
+
+   //map.add(geojsonlayer);  // adds the layer to the map
  });
 
 });
