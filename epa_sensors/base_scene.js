@@ -22,3 +22,4 @@ require([
                 zoom: 7,
                 center: [-87, 34]
               });
+            });
