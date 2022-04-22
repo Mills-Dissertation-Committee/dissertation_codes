@@ -11,7 +11,7 @@ require([
     "esri/renderers/ClassBreaksRenderer",
     "esri/rest/support/Query"
   ], function(MapView, Map, SceneView, Layer, esriRequest, geometryEngine, SpatialReference, FeatureLayer, Point, Polygon,
-    Legend, ClassBreaksRenderer, Query) => {
+    Legend, ClassBreaksRenderer, Query) {
               const map = new Map({
                 basemap: "gray-vector"
               });

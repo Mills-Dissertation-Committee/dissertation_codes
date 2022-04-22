@@ -22,4 +22,3 @@
         function rejection(error) {
           console.log("Layer failed to load: ", error);
         }
-      });
