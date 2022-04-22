@@ -53,7 +53,7 @@ require(["esri/Map", "esri/views/SceneView", "esri/layers/Layer", "esri/layers/G
       symbol: fillSymbol
     });
 
-    graphicsLayer.add(polygonGraphic);
+    map.add(polygonGraphic);
 
    //map.add(geojsonlayer);  // adds the layer to the map
  });
