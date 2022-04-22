@@ -9,7 +9,9 @@ function loadScript(src, callback)
 loadScript('https://js.arcgis.com/4.23/', function() {  // Esri 4.23 API.
   loadScript('variables.js', function() {              // Variables.
     loadScript('pointsourceFeatures.js', function() {  // Esri map requirements map/mapview, and other scripts.
+      loadScript('region_11_counties.js', function() { // Esri Region 11 counties.
 
+      })
       })
   })
 })

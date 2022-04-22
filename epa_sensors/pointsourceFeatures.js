@@ -10,7 +10,7 @@
       "esri/widgets/Legend",
       "esri/renderers/ClassBreaksRenderer",
       "esri/rest/support/Query"
-    ], function(MapView, Map, esriRequest, geometryEngine, SpatialReference, FeatureLayer, Point, Polygon,
+    ], function(MapView, Map, SceneView, Layer, esriRequest, geometryEngine, SpatialReference, FeatureLayer, Point, Polygon,
       Legend, ClassBreaksRenderer, Query) {
 
       /**************************************************
