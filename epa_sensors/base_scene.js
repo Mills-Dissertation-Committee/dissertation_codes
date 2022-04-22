@@ -1,4 +1,4 @@
-require(["esri/Map", "esri/views/SceneView", "esri/layers/Layer"], (
+require(["esri/Map", "esri/views/SceneView", "esri/layers/Layer", "esri/layers/GraphicsLayer", "esri/Graphic"], (
   Map,
   SceneView,
   Layer
