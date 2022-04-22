@@ -22,4 +22,10 @@ require([
                 zoom: 7,
                 center: [-87, 34]
               });
+              
+              loadScript('region_11_counties.js', function() {      // Esri Region 11 counties.
+                loadScript('pointsourceFeatures.js', function() {   // Esri map requirements map/mapview, and other scripts.
+                })
+              })
+
             });
