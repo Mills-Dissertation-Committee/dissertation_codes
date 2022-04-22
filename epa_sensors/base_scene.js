@@ -16,25 +16,16 @@ require(["esri/Map", "esri/views/SceneView", "esri/layers/Layer"], (
 
   /************************************************
    *
-   * Create a layer from an existing Portal item hosted
-   * in ArcGIS Online using the ID of the item.
+   * Create a layer from a GEOjson layer.
+   *
    *
    *************************************************/
-  Layer.fromPortalItem({
-    portalItem: {
-      // autocasts as new PortalItem()
-      id: "8444e275037549c1acab02d2626daaee"
-    }
-  })
-    .then(addLayer)
-    .catch(rejection);
+   require(["esri/layers/GeoJSONLayer"], function(GeoJSONLayer){
+   // points to the states layer in a service storing U.S. census data
+   const geojsonlayer = new GeoJSONLayer({
+     url: "geojson_file/region_11_counties.geojson"
+   });
+   map.add(geojsonlayer);  // adds the layer to the map
+ });
 
-  // Adds the layer to the map once it loads
-  function addLayer(layer) {
-    map.add(layer);
-  }
-
-  function rejection(error) {
-    console.log("Layer failed to load: ", error);
-  }
 });
