@@ -11,7 +11,7 @@ require(["esri/Map", "esri/views/SceneView", "esri/layers/Layer"], (
     map: map,
     container: "viewDiv",
     zoom: 7,
-    center: [-87, 34]
+    center: [-97.7, 30.2]
   });
 
   require(["esri/layers/GeoJSONLayer"], function(GeoJSONLayer){
