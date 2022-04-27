@@ -17,9 +17,9 @@ require(["esri/Map", "esri/views/SceneView", "esri/layers/Layer"], (
   require(["esri/layers/GeoJSONLayer"], function(GeoJSONLayer){
     // points to the states layer in a service storing U.S. census data
     const geojsonlayer = new GeoJSONLayer({
-      url: "geojson_files/region_11_counties.json"
+      url: "geojson_files/region_11_counties.geojson"
     });
-    
+
     map.add(geojsonlayer);  // adds the layer to the map
   });
 
