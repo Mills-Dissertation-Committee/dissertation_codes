@@ -8,7 +8,10 @@ function loadScript(src, callback)
 
 loadScript('https://js.arcgis.com/4.23/', function() {      // Esri 4.23 API.
   loadScript('variables.js', function() {                   // Variables.
-    loadScript('base_scene.js', function() {                  // Loads base scene and requirements.
+    loadScript('base_scene.js', function() {                // Loads base scene and requirements.
+      loadScript('epa_sensors.js', function() {             // Loads EPA sensors.
+        
+      })
     })
   })
 })
