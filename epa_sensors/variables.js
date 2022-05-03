@@ -78,10 +78,10 @@ var epaRenderer = {
     type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
     style: "circle",
     size: 10,
-    color: [180, 180, 180, 1],
+    color: "white",
     outline: {
       width: 1,
-      color: [0, 0, 0, 1],
+      color: "black",
       style: "solid"
     }
   }
