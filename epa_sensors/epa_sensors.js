@@ -19,7 +19,7 @@ require([
             epaLongitude[i] = Line[2];
             epaScale[i] = Line[3];
             epaScaleDef[i] = Line[4];
-            epaMonitoringObj[i] = Line[5];
+            epaMonitorObj[i] = Line[5];
 
             epaPoint[i] =
             {
@@ -34,7 +34,7 @@ require([
               ObjectID: parseInt(i),
               epa_scale: epaScale[i],
               epa_scale_def: epaScaleDef[i],
-              epa_monitoring_obj: epaMonitoringObj[i]
+              epa_monitoring_obj: epaMonitorObj[i]
             }
           };
           i++;
