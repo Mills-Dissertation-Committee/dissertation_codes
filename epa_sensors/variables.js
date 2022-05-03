@@ -37,16 +37,32 @@ var epaLayer;
      name: "epaScale",
      alias: "epaScale",
      type: "string"
+   }, {
+     name: "epaScaleDef",
+     alias: "epaScaleDef",
+     type: "string"
+   }, {
+     name: "epaMonitorObj",
+     alias: "epaMonitorObj",
+     type: "string"
    }];
 
 // Set up popup template for the Point-Source layer
 var epaTemplate = {
-  title: "{epaName}<br>Scale: {epaScale}",
+  title: "{epaName}<br>Object ID: {ObjectID}<br>{epaLongitude},{epaLatitude}",
   content: [{
     type: "fields",
     fieldInfos: [{
       fieldName: "epaScale",
       label: "epaScale",
+      visible: true
+    }, {
+      fieldName: "epaScaleDef",
+      label: "epaScaleDef",
+      visible: true
+    }, {
+      fieldName: "epaMonitorObj",
+      label: "epaMonitorObj",
       visible: true
     }]
   }]
