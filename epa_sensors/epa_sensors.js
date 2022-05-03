@@ -14,27 +14,27 @@ require([
         {
             Line = Data[i+1].split(",");
 
-            epa_name[i] = Line[0];
-            epa_latitude[i] = Line[1];
-            epa_longitude[i] = Line[2];
-            epa_scale[i] = Line[3];
-            epa_scale_def[i] = Line[4];
-            epa_monitoring_obj[i] = Line[5];
+            epaName[i] = Line[0];
+            epaLatitude[i] = Line[1];
+            epaLongitude[i] = Line[2];
+            epaScale[i] = Line[3];
+            epaScaleDef[i] = Line[4];
+            epaMonitoringObj[i] = Line[5];
 
             epaPoint[i] =
             {
             geometry: new Point({
-              x: epa_longitude[i],
-              y: epa_latitude[i],
+              x: epaLongitude[i],
+              y: epaLatitude[i],
               spatialReference: 4326
             }),
             // select only the attributes you care about
             attributes: {
-              title: epa_name[i],
+              title: epaName[i],
               ObjectID: parseInt(i),
-              epa_scale: epa_scale[i],
-              epa_scale_def: epa_scale_def[i],
-              epa_monitoring_obj: epa_monitoring_obj[i]
+              epa_scale: epaScale[i],
+              epa_scale_def: epaScaleDef[i],
+              epa_monitoring_obj: epaMonitoringObj[i]
             }
           };
           i++;
