@@ -1,8 +1,10 @@
 require(["esri/Map",
           "esri/views/SceneView",
+          "esri/widgets/Legend",
           "esri/layers/Layer"], (
   Map,
   SceneView,
+  Legend,
   Layer
 ) => {
   const map = new Map({
@@ -15,6 +17,26 @@ require(["esri/Map",
     zoom: 9,
     center: [-97.7, 30.2]
   });
+
+  view.when(() => {
+          // get the first layer in the collection of operational layers in the WebMap
+          // when the resources in the MapView have loaded.
+          const featureLayer = map.layers.getItemAt(0);
+
+          const legend = new Legend({
+            view: view,
+            layerInfos: [
+              {
+                layer: geojsonlayer,
+                title: "Region 11 Counties"
+              }
+            ]
+          });
+
+          // Add widget to the bottom right corner of the view
+          view.ui.add(legend, "bottom-right");
+        });
+
 
   // ADD REGION 11 COUNTIES TO THE MAP.
   require(["esri/layers/GeoJSONLayer",
