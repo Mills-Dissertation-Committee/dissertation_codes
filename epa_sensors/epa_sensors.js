@@ -55,4 +55,5 @@ require([
 
           map.add(epaLayer);
         }
+      });
 });
