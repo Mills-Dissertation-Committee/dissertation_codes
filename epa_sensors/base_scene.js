@@ -25,6 +25,13 @@ require(["esri/Map",
 
     geojsonlayer.opacity = 0.25;
 
+    geojsonlayer.renderer = new SimpleRenderer({
+        symbol: new SimpleFillSymbol({
+          color: "black",
+          outline: "white"
+        })
+      });
+
     map.add(geojsonlayer);  // adds the layer to the map
   });
 
