@@ -61,7 +61,7 @@ var epaRenderer = {
   symbol: {
     type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
     style: "circle",
-    size: 15,
+    size: 10,
     color: [180, 180, 180, 1],
     outline: {
       width: 1,

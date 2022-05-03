@@ -59,11 +59,11 @@ require(["esri/Map",
               }),
               // select only the attributes you care about
               attributes: {
-                title: epaName[i],
+                epaName: epaName[i],
                 ObjectID: parseInt(i),
-                epa_scale: epaScale[i],
-                epa_scale_def: epaScaleDef[i],
-                epa_monitoring_obj: epaMonitorObj[i]
+                epaScale: epaScale[i],
+                epaScaleDef: epaScaleDef[i],
+                epaMonitorObj: epaMonitorObj[i]
               }
             };
             i++;
