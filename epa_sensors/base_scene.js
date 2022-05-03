@@ -23,6 +23,8 @@ require(["esri/Map",
       url: "geojson_files/region_11_counties.geojson"
     });
 
+    geojsonlayer.opacity = 0.25;
+
     map.add(geojsonlayer);  // adds the layer to the map
   });
 
