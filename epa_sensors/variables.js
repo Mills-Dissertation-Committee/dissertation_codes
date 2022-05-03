@@ -49,7 +49,7 @@ var epaLayer;
 
 // Set up popup template for the Point-Source layer
 var epaTemplate = {
-  title: "{epaName}<br>Object ID: {ObjectID}<br>{epaLongitude},{epaLatitude}",
+  title: "{epaName}<br>Object ID: {ObjectID}",
   content: [{
     type: "fields",
     fieldInfos: [{
