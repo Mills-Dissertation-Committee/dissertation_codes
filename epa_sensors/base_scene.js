@@ -102,7 +102,17 @@ require(["esri/Map",
 
             map.add(epaLayer);
           }
+
         });
+        // Create a variable referencing the checkbox node
+          const epaLayerToggle = document.getElementById("epaLayer");
+
+          // Listen to the change event for the checkbox
+          epaLayerToggle.addEventListener("change", () => {
+            // When the checkbox is checked (true), set the layer's visibility to true
+            epaLayer.visible = epaLayerToggle.checked;
+          });
+
   });
 
 });
