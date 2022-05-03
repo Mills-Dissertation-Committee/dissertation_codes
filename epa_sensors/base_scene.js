@@ -130,14 +130,19 @@ require(["esri/Map",
   view.when(() => {
           // get the first layer in the collection of operational layers in the WebMap
           // when the resources in the MapView have loaded.
-          const featureLayer = map.layers.getItemAt(0);
+          const countiesLayer = map.layers.getItemAt(0);
+          const epaMontiorLayer = map.layers.getItemAt(1);
 
           const legend = new Legend({
             view: view,
             layerInfos: [
               {
-                layer: featureLayer,
+                layer: countiesLayer,
                 title: "Region 11 Counties"
+              },
+              {
+                layer: epaMonitorLayer,
+                title: "EPA Monitors"
               }
             ]
           });
