@@ -25,6 +25,17 @@
         opacity: 0.75;
       }
 
+      #region11LayerToggle {
+          top: 80px;
+          right: 20px;
+          position: absolute;
+          z-index: 99;
+          background-color: white;
+          border-radius: 8px;
+          padding: 10px;
+          opacity: 0.75;
+        }
+
     #infoDiv {
       position: absolute;
       bottom: 15px;
@@ -56,6 +67,7 @@
 <textarea cols="225" rows="27" id='PlottingEPA' style="display: none;"></textarea>
 <div id="viewDiv"></div>
 <span id="epaLayerToggle" class="esri-widget"> <input type="checkbox" id="epaLayer" checked /> EPA Monitors </span>
+<span id="region11LayerToggle" class="esri-widget"> <input type="checkbox" id="region11Layer" checked /> EPA Monitors </span>
 <div id="infoDiv">
   <h2>EPA Sensors<br>in TCEQ Region 11</h2>
 </div>

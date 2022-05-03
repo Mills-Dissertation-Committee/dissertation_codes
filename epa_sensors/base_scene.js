@@ -41,6 +41,16 @@ require(["esri/Map",
       });
 
     map.add(geojsonlayer);  // adds the layer to the map
+
+    // Create a variable referencing the checkbox node
+      const region11LayerToggle = document.getElementById("region11Layer");
+
+      // Listen to the change event for the checkbox
+      region11LayerToggle.addEventListener("change", () => {
+        // When the checkbox is checked (true), set the layer's visibility to true
+        geojsonLayer.visible = region11LayerToggle.checked;
+      });
+
   });
 
   // ADD EPA SENSORS TO THE MAP.
