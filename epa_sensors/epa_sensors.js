@@ -1,7 +1,7 @@
 require([
     "esri/layers/FeatureLayer",
-    "esri/geometry/Polygon"
-  ], function(FeatureLayer, Polygon) {
+    "esri/geometry/Point"
+  ], function(FeatureLayer, Point) {
     loadScript('readCSV.js', function() {                 // This script reads the Point-Source Emissions CSV.
       /**************************************************
        * Create graphics with textarea data
