@@ -100,6 +100,6 @@ var epaRenderer = {
       },
   labelPlacement: "above-right",
   labelExpressionInfo: {
-    expression: "epaName"
+    expression: "{epaName}"
   }
     };
