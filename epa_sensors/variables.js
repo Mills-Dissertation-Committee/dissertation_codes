@@ -97,5 +97,9 @@ var epaRenderer = {
           size: 12,
           weight: "bold"
         }
-      }
+      },
+  labelPlacement: "above-right",
+  labelExpressionInfo: {
+    expression: "epaName"
+  }
     };
