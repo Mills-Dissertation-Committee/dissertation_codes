@@ -34,8 +34,8 @@ require(["esri/Map",
         symbol: new SimpleFillSymbol({
           color: "darkgreen",
           outline: {
-            color: "white",
-            width: "1px"
+            color: "black",
+            width: "2px"
           }
         })
       });
