@@ -136,7 +136,7 @@ require(["esri/Map",
             view: view,
             layerInfos: [
               {
-                layer: geojsonlayer,
+                layer: featurelayer,
                 title: "Region 11 Counties"
               }
             ]
