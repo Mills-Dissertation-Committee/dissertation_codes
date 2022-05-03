@@ -93,13 +93,9 @@ var epaRenderer = {
         type: "text",  // autocasts as new TextSymbol()
         color: "black",
         font: {  // autocast as new Font()
-          family: "Playfair Display",
+          family: "Avenir Next LT Pro Regular",
           size: 12,
           weight: "bold"
         }
-      },
-      labelPlacement: "above-center",
-      labelExpressionInfo: {
-        expression: "$feature.MARKER_ACTIVITY"
       }
     };
