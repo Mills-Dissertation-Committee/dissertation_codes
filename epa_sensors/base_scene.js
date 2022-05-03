@@ -131,7 +131,7 @@ require(["esri/Map",
           // get the first layer in the collection of operational layers in the WebMap
           // when the resources in the MapView have loaded.
           const countiesLayer = map.layers.getItemAt(0);
-          const epaMontiorLayer = map.layers.getItemAt(1);
+          const epaMonitorLayer = map.layers.getItemAt(1);
 
           const legend = new Legend({
             view: view,
