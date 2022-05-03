@@ -48,7 +48,7 @@ require(["esri/Map",
       // Listen to the change event for the checkbox
       region11LayerToggle.addEventListener("change", () => {
         // When the checkbox is checked (true), set the layer's visibility to true
-        geojsonLayer.visible = region11LayerToggle.checked;
+        geojsonlayer.visible = region11LayerToggle.checked;
       });
 
   });
