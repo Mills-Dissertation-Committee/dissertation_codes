@@ -96,7 +96,8 @@ require(["esri/Map",
               fields: epaFields, // This is required when creating a layer from Graphics
               objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
               renderer: epaRenderer, // set the visualization on the layer
-              popupTemplate: epaTemplate
+              popupTemplate: epaTemplate,
+              labelingInfo: [epaLabelClass]
             });
 
             map.add(epaLayer);

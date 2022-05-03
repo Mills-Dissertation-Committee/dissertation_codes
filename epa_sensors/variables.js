@@ -86,3 +86,20 @@ var epaRenderer = {
     }
   }
     };
+
+    const epaLabelClass = {
+      // autocasts as new LabelClass()
+      symbol: {
+        type: "text",  // autocasts as new TextSymbol()
+        color: "black",
+        font: {  // autocast as new Font()
+          family: "Playfair Display",
+          size: 12,
+          weight: "bold"
+        }
+      },
+      labelPlacement: "above-center",
+      labelExpressionInfo: {
+        expression: "$feature.MARKER_ACTIVITY"
+      }
+    };
