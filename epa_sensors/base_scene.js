@@ -32,7 +32,7 @@ require(["esri/Map",
 
     geojsonlayer.renderer = new SimpleRenderer({
         symbol: new SimpleFillSymbol({
-          color: "black",
+          color: "darkgreen",
           outline: {
             color: "white",
             width: "1px"
