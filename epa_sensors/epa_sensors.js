@@ -7,7 +7,7 @@ require([
        * Create graphics with textarea data
        **************************************************/
         // raw CSV data from textarea.
-        Data = PlottingPointSource.value.split('\n');
+        Data = PlottingEPA.value.split('\n');
 
         // +2 to skip the header and the empty line at the bottom.
         while(Data.length > (i + 2))
