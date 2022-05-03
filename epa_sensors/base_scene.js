@@ -18,9 +18,11 @@ require(["esri/Map",
 
   // ADD REGION 11 COUNTIES TO THE MAP.
   require(["esri/layers/GeoJSONLayer",
-  "esri/renderers/SimpleRenderer"], function(
+            "esri/renderers/SimpleRenderer",
+            "esri/symbols/SimpleFillSymbol"], function(
     GeoJSONLayer,
-    SimpleRenderer){
+    SimpleRenderer,
+    SimpleFillSymbol){
     // points to the states layer in a service storing U.S. census data
     const geojsonlayer = new GeoJSONLayer({
       url: "geojson_files/region_11_counties.geojson"
