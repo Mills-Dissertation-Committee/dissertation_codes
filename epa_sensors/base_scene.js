@@ -279,6 +279,7 @@ require(["esri/Map",
       // create an instance of esri/layers/support/Field for each field object
       fields: wsFields, // This is required when creating a layer from Graphics
       objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
+      renderer: windstationRenderer,
       popupTemplate: wsTemplate
     });
 
