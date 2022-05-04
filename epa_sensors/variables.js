@@ -190,11 +190,11 @@ var epaRenderer = {
       }, {
         name: "wLatitude",
         alias: "wLatitude",
-        type: "float"
+        type: "double"
       }, {
         name: "wLongitude",
         alias: "wLongitude",
-        type: "float"
+        type: "double"
       }, {
         name: "Name",
         alias: "Name",
@@ -202,31 +202,31 @@ var epaRenderer = {
       }, {
         name: "temperature",
         alias: "temperature",
-        type: "float"
+        type: "double"
       }, {
         name: "pressure",
         alias: "pressure",
-        type: "number"
+        type: "integer"
       }, {
         name: "sealevel",
         alias: "sealevel",
-        type: "float"
+        type: "double"
       }, {
         name: "groundlevel",
         alias: "groundlevel",
-        type: "float"
+        type: "double"
       }, {
         name: "humidity",
         alias: "humidity",
-        type: "float"
+        type: "double"
       }, {
         name: "speed",
         alias: "speed",
-        type: "float"
+        type: "double"
       }, {
         name: "direction",
         alias: "direction",
-        type: "float"
+        type: "double"
       }, {
         name: "datetime",
         alias: "datetime",
