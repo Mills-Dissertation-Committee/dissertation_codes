@@ -278,10 +278,16 @@ require(["esri/Map",
       popupTemplate: wsTemplate
     });
   }
-
+  
+  // ADD WEATHER STATIONS TO THE MAP.
+  require([
+      "esri/layers/FeatureLayer",
+      "esri/geometry/Point"
+    ], function(FeatureLayer, Point) {
     createWSgraphics();
 
     map.add(wsLayer);
+});
 
   view.when(() => {
           // get the first layer in the collection of operational layers in the WebMap
