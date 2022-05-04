@@ -284,6 +284,15 @@ require(["esri/Map",
     });
 
     map.add(wsLayer);
+
+    // Create a variable referencing the checkbox node
+      const wsLayerToggle = document.getElementById("wsLayer");
+
+      // Listen to the change event for the checkbox
+      wsLayerToggle.addEventListener("change", () => {
+        // When the checkbox is checked (true), set the layer's visibility to true
+        wslayer.visible = wsLayerToggle.checked;
+      });
   }
 
     createWSgraphics();
@@ -295,6 +304,7 @@ require(["esri/Map",
           const countiesLayer = map.layers.getItemAt(0);
           const epaMonitorLayer = map.layers.getItemAt(1);
           const paMonitorLayer = map.layers.getItemAt(2);
+          const wsLegendLayer = map.layers.getItemAt(3);
 
           const legend = new Legend({
             view: view,
@@ -310,6 +320,10 @@ require(["esri/Map",
               {
                 layer: paMonitorLayer,
                 title: "PA Monitors"
+              },
+              {
+                layer: wsLegendLayer,
+                title: "WS Layer"
               }
             ]
           });
