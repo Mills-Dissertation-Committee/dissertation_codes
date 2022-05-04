@@ -195,6 +195,12 @@ require(["esri/Map",
 
   });
 
+  // ADD WEATHER STATIONS TO THE MAP.
+  require([
+      "esri/layers/FeatureLayer",
+      "esri/geometry/Point"
+    ], function(FeatureLayer, Point) {
+
   function createWSgraphics() {
 
   var xhttp = new XMLHttpRequest();
@@ -278,12 +284,7 @@ require(["esri/Map",
       popupTemplate: wsTemplate
     });
   }
-  
-  // ADD WEATHER STATIONS TO THE MAP.
-  require([
-      "esri/layers/FeatureLayer",
-      "esri/geometry/Point"
-    ], function(FeatureLayer, Point) {
+
     createWSgraphics();
 
     map.add(wsLayer);
