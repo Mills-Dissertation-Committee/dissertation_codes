@@ -15,4 +15,4 @@ function IO(U, V)
   return X.responseText;
 }
 
-el("PlottingEPA").value = IO("epa_sensors.csv");
+el("PlottingEPA").value = IO("pa_sensors.csv");
