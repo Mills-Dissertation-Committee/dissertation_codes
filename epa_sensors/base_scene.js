@@ -271,8 +271,6 @@ require(["esri/Map",
     request.open("GET", "weatherstationpolygons-f.json", false);
     request.send(null);
     wsPolyObj = JSON.parse(request.responseText);
-
-    createPTgraphic()
   }
 
   function createwsLayer() {
