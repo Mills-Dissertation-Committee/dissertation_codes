@@ -198,7 +198,7 @@ require(["esri/Map",
   function createWSgraphics() {
 
   var xhttp = new XMLHttpRequest();
-  var url = "https://api.openweathermap.org/data/2.5/box/city?bbox=--100,29,-95,32,10&appid=533f583f4afc41f1cc7a2ebd44ffc1ac";
+  var url = "https://api.openweathermap.org/data/2.5/box/city?bbox=-100,29,-95,32,10&appid=533f583f4afc41f1cc7a2ebd44ffc1ac";
 
   xhttp.onreadystatechange = function()
     {
