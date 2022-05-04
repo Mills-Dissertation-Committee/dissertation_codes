@@ -135,7 +135,7 @@ var epaRenderer = {
         }
       }
         };
-
+/* COMMENTED OUT LABEL
     const epaLabelClass = {
       // autocasts as new LabelClass()
       symbol: {
@@ -152,3 +152,4 @@ var epaRenderer = {
     expression: "$feature.epaName"
   }
     };
+    */

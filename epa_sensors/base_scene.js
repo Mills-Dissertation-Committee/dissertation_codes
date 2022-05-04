@@ -108,8 +108,9 @@ require(["esri/Map",
               fields: epaFields, // This is required when creating a layer from Graphics
               objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
               renderer: epaRenderer, // set the visualization on the layer
-              popupTemplate: epaTemplate,
-              labelingInfo: [epaLabelClass]
+              popupTemplate: epaTemplate
+              /*,
+              labelingInfo: [epaLabelClass]*/
             });
 
             map.add(epaLayer);
@@ -199,6 +200,7 @@ require(["esri/Map",
           // when the resources in the MapView have loaded.
           const countiesLayer = map.layers.getItemAt(0);
           const epaMonitorLayer = map.layers.getItemAt(1);
+          const paMonitorLayer = map.layers.getItemAt(2);
 
           const legend = new Legend({
             view: view,
@@ -210,6 +212,10 @@ require(["esri/Map",
               {
                 layer: epaMonitorLayer,
                 title: "EPA Monitors"
+              },
+              {
+                layer: paMonitorLayer,
+                title: "PA Monitors"
               }
             ]
           });
