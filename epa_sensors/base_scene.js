@@ -127,6 +127,73 @@ require(["esri/Map",
 
   });
 
+  // ADD EPA SENSORS TO THE MAP.
+  require([
+      "esri/layers/FeatureLayer",
+      "esri/geometry/Point"
+    ], function(FeatureLayer, Point) {
+      loadScript('readCSVpa.js', function() {                 // This script reads the Point-Source Emissions CSV.
+        /**************************************************
+         * Create graphics with textarea data
+         **************************************************/
+          // raw CSV data from textarea.
+          Data = PlottingPA.value.split('\n');
+          var i = 0;
+
+          // +2 to skip the header and the empty line at the bottom.
+          while(Data.length > (i + 2))
+          {
+              Line = Data[i+1].split(",");
+
+              paID[i] = Line[0];
+              paLatitude[i] = Line[1];
+              paLongitude[i] = Line[2];
+
+              paPoint[i] =
+              {
+              geometry: new Point({
+                x: paLongitude[i],
+                y: paLatitude[i],
+                spatialReference: 4326
+              }),
+              // select only the attributes you care about
+              attributes: {
+                epaName: paID[i],
+                ObjectID: parseInt(i)
+              }
+            };
+            i++;
+          }
+          if(Data.length = (i + 2))
+          {
+            /**************************************************
+             * Create a FeatureLayer with the Point-Source Array
+             **************************************************/
+            paLayer = new FeatureLayer({
+              source: paPoint, // autocast as an array of esri/Graphic
+              // create an instance of esri/layers/support/Field for each field object
+              fields: paFields, // This is required when creating a layer from Graphics
+              objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
+              renderer: paRenderer, // set the visualization on the layer
+              popupTemplate: paTemplate,
+            });
+
+            map.add(paLayer);
+          }
+
+        });
+
+        // Create a variable referencing the checkbox node
+          const paLayerToggle = document.getElementById("paLayer");
+
+          // Listen to the change event for the checkbox
+          paLayerToggle.addEventListener("change", () => {
+            // When the checkbox is checked (true), set the layer's visibility to true
+            paLayer.visible = paLayerToggle.checked;
+          });
+
+  });
+
   view.when(() => {
           // get the first layer in the collection of operational layers in the WebMap
           // when the resources in the MapView have loaded.
