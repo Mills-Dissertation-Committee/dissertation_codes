@@ -281,11 +281,11 @@ require(["esri/Map",
       objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
       popupTemplate: wsTemplate
     });
+
+    map.add(wsLayer);
   }
 
     createWSgraphics();
-
-    map.add(wsLayer);
 });
 
   view.when(() => {
