@@ -210,11 +210,11 @@ var epaRenderer = {
       }, {
         name: "sealevel",
         alias: "sealevel",
-        type: "float"
+        type: "integer"
       }, {
         name: "groundlevel",
         alias: "groundlevel",
-        type: "float"
+        type: "integer"
       }, {
         name: "humidity",
         alias: "humidity",
@@ -279,7 +279,7 @@ var epaRenderer = {
           type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
           style: "square",
           size: 5,
-          color: "blue",
+          color: "lightblue",
           outline: {
             width: 1,
             color: "black",
