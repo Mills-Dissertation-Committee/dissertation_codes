@@ -153,3 +153,137 @@ var epaRenderer = {
   }
     };
     */
+
+    // WEATHER STATION VARIABLES
+    var wsPolygon = [];
+    var wsPolyObj;  // Stores the JSON information after it is parsed.
+    var weatherStation = [];
+    var wsPoint = [];
+    var wLatitude = [];
+    var wLongitude = [];
+    var Name = [];
+    var temperature = [];
+    var pressure = [];
+    var sealevel = [];
+    var groundlevel = [];
+    var humidity = [];
+    var speed = [];
+    var direction = [];
+    var datetime = [];
+
+    var wsLayer;
+
+    var wsFields = [
+      {
+        name: "ObjectID",
+        alias: "ObjectID",
+        type: "oid"
+      },
+      {
+        name: "title",
+        alias: "title",
+        type: "string"
+      }, {
+        name: "type",
+        alias: "type",
+        type: "string"
+      }, {
+        name: "wLatitude",
+        alias: "wLatitude",
+        type: "float"
+      }, {
+        name: "wLongitude",
+        alias: "wLongitude",
+        type: "float"
+      }, {
+        name: "Name",
+        alias: "Name",
+        type: "string"
+      }, {
+        name: "temperature",
+        alias: "temperature",
+        type: "float"
+      }, {
+        name: "pressure",
+        alias: "pressure",
+        type: "number"
+      }, {
+        name: "sealevel",
+        alias: "sealevel",
+        type: "float"
+      }, {
+        name: "groundlevel",
+        alias: "groundlevel",
+        type: "float"
+      }, {
+        name: "humidity",
+        alias: "humidity",
+        type: "float"
+      }, {
+        name: "speed",
+        alias: "speed",
+        type: "float"
+      }, {
+        name: "direction",
+        alias: "direction",
+        type: "float"
+      }, {
+        name: "datetime",
+        alias: "datetime",
+        type: "date"
+      }];
+      // Set up popup template for the Weather Station layer
+      var wsTemplate = {
+        title: "{title}",
+        content: [{
+          type: "fields",
+          fieldInfos: [{
+            fieldName: "speed",
+            label: "Wind Speed",
+            visible: true
+          }, {
+            fieldName: "direction",
+            label: "Wind Direction",
+            visible: true
+          }, {
+            fieldName: "temperature",
+            label: "Temperature",
+            visible: true
+          }, {
+            fieldName: "pressure",
+            label: "Pressure",
+            visible: true
+          }, {
+            fieldName: "humidity",
+            label: "Humidity",
+            visible: true
+          }, {
+            fieldName: "datetime",
+            label: "TimeStamp",
+            visible: true
+          }, {
+            fieldName: "sealevel",
+            label: "Sea Level",
+            visible: true,
+          }, {
+            fieldName: "groundlevel",
+            label: "Ground Level",
+            visible: true
+          }]
+        }]
+      };
+
+      var windstationRenderer = {
+        type: "simple", // autocasts as new SimpleRenderer()
+        symbol: {
+          type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+          style: "square",
+          size: 5,
+          color: "blue",
+          outline: {
+            width: 1,
+            color: "black",
+            style: "solid"
+            }
+          }
+        };
