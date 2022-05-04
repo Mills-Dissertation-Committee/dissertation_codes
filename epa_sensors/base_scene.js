@@ -60,7 +60,7 @@ require(["esri/Map",
       "esri/layers/FeatureLayer",
       "esri/geometry/Point"
     ], function(FeatureLayer, Point) {
-      loadScript('readCSV.js', function() {                 // This script reads the Point-Source Emissions CSV.
+      loadScript('readCSVepa.js', function() {                 // This script reads the Point-Source Emissions CSV.
         /**************************************************
          * Create graphics with textarea data
          **************************************************/
