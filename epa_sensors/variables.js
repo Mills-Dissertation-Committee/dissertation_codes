@@ -210,11 +210,11 @@ var epaRenderer = {
       }, {
         name: "sealevel",
         alias: "sealevel",
-        type: "string"
+        type: "integer"
       }, {
         name: "groundlevel",
         alias: "groundlevel",
-        type: "string"
+        type: "integer"
       }, {
         name: "humidity",
         alias: "humidity",
