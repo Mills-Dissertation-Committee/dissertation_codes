@@ -278,7 +278,7 @@ require(["esri/Map",
       source: wsPoint, // autocast as an array of esri/Graphic
       // create an instance of esri/layers/support/Field for each field object
       fields: wsFields, // This is required when creating a layer from Graphics
-      objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
+      objectIdField: "Weather Stations", // This must be defined when creating a layer from Graphics
       renderer: windstationRenderer,
       popupTemplate: wsTemplate
     });
@@ -304,7 +304,7 @@ require(["esri/Map",
           const countiesLayer = map.layers.getItemAt(0);
           const epaMonitorLayer = map.layers.getItemAt(1);
           const paMonitorLayer = map.layers.getItemAt(2);
-          const wsLegendLayer = map.layers.getItemAt(3);
+          const wsLegendLayer = map.layers("Weather Stations");
 
           const legend = new Legend({
             view: view,
