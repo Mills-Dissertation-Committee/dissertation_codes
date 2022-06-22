@@ -291,16 +291,16 @@ require(["esri/Map",
   }
 
     createWSgraphics();
+
+    // Create a variable referencing the checkbox node
+      const wsLayerToggle = document.getElementById("wsLayer");
+
+      // Listen to the change event for the checkbox
+      wsLayerToggle.addEventListener("change", () => {
+        // When the checkbox is checked (true), set the layer's visibility to true
+        wslayer.visible = wsLayerToggle.checked;
+      });
 });
-
-// Create a variable referencing the checkbox node
-  const wsLayerToggle = document.getElementById("wsLayer");
-
-  // Listen to the change event for the checkbox
-  wsLayerToggle.addEventListener("change", () => {
-    // When the checkbox is checked (true), set the layer's visibility to true
-    wslayer.visible = wsLayerToggle.checked;
-  });
 
   view.when(() => {
           // get the first layer in the collection of operational layers in the WebMap
