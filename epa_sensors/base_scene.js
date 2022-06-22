@@ -307,7 +307,7 @@ require(["esri/Map",
           const paMonitorLayer = map.layers.getItemAt(2);
           const wsLegendLayer = map.layers.getItemAt(3);
 
-          console.log(map.layers.getItemAt(3))
+          console.log(map.layers.getItemAt(3).id)
 
           const legend = new Legend({
             view: view,
@@ -326,7 +326,7 @@ require(["esri/Map",
               },
               {
                 layer: wsLegendLayer,
-                title: "WS Layer"
+                title: wsLegendLayer.id
               }
             ]
           });
