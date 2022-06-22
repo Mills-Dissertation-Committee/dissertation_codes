@@ -275,6 +275,7 @@ require(["esri/Map",
 
   function createwsLayer() {
     wsLayer = new FeatureLayer({
+      id: "Weather Stations",
       source: wsPoint, // autocast as an array of esri/Graphic
       // create an instance of esri/layers/support/Field for each field object
       fields: wsFields, // This is required when creating a layer from Graphics
