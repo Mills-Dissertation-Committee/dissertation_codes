@@ -305,10 +305,10 @@ require(["esri/Map",
   view.when(() => {
           // get the first layer in the collection of operational layers in the WebMap
           // when the resources in the MapView have loaded.
-          const countiesLayer = map.layers.getItemAt(0);
-          const epaMonitorLayer = map.layers.getItemAt(1);
-          const paMonitorLayer = map.layers.getItemAt(2);
-          const wsLegendLayer = map.layers.getItemAt(3);
+          const firstLayer = map.layers.getItemAt(0);
+          const secondLayer = map.layers.getItemAt(1);
+          const thirdLayer = map.layers.getItemAt(2);
+          const fourthLayer = map.layers.getItemAt(3);
 
           console.log(map.layers.getItemAt(3).id)
 
@@ -316,20 +316,20 @@ require(["esri/Map",
             view: view,
             layerInfos: [
               {
-                layer: countiesLayer,
-                title: countiesLayer.id
+                layer: firstLayer,
+                title: firstLayer.id
               },
               {
-                layer: epaMonitorLayer,
-                title: epaMonitorLayer.id
+                layer: secondLayer,
+                title: secondLayer.id
               },
               {
-                layer: paMonitorLayer,
-                title: paMonitorLayer.id
+                layer: thirdLayer,
+                title: thirdLayer.id
               },
               {
-                layer: wsLegendLayer,
-                title: wsLegendLayer.id
+                layer: fourthLayer,
+                title: fourthLayer.id
               }
             ]
           });
