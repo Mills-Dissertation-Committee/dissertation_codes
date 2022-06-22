@@ -329,7 +329,7 @@ require(["esri/Map",
               },
               {
                 layer: fourthLayer,
-                title: foLayer.id
+                title: fourthLayer.id
               }
             ]
           });
