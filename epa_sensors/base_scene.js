@@ -305,7 +305,9 @@ require(["esri/Map",
           const countiesLayer = map.layers.getItemAt(0);
           const epaMonitorLayer = map.layers.getItemAt(1);
           const paMonitorLayer = map.layers.getItemAt(2);
-          const wsLegendLayer = map.wsLayer
+          const wsLegendLayer = map.layers.getItemAt(3);
+
+          console.log(map.layers.getItemAt(3))
 
           const legend = new Legend({
             view: view,
