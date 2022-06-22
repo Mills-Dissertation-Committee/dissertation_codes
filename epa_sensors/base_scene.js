@@ -31,6 +31,7 @@ require(["esri/Map",
     });
 
     geojsonlayer.opacity = 0.25;
+    geojsonlayer.id = "Region 11 Counties";
 
     geojsonlayer.renderer = new SimpleRenderer({
         symbol: new SimpleFillSymbol({
@@ -103,6 +104,7 @@ require(["esri/Map",
              * Create a FeatureLayer with the Point-Source Array
              **************************************************/
             epaLayer = new FeatureLayer({
+              id: "EPA Monitors",
               source: epaPoint, // autocast as an array of esri/Graphic
               // create an instance of esri/layers/support/Field for each field object
               fields: epaFields, // This is required when creating a layer from Graphics
@@ -171,6 +173,7 @@ require(["esri/Map",
              * Create a FeatureLayer with the Point-Source Array
              **************************************************/
             paLayer = new FeatureLayer({
+              id: "Purple Air Monitors",
               source: paPoint, // autocast as an array of esri/Graphic
               // create an instance of esri/layers/support/Field for each field object
               fields: paFields, // This is required when creating a layer from Graphics
@@ -314,15 +317,15 @@ require(["esri/Map",
             layerInfos: [
               {
                 layer: countiesLayer,
-                title: "Region 11 Counties"
+                title: countiesLayer.id
               },
               {
                 layer: epaMonitorLayer,
-                title: "EPA Monitors"
+                title: epaMonitorLayer.id
               },
               {
                 layer: paMonitorLayer,
-                title: "PA Monitors"
+                title: paMonitorLayer.id
               },
               {
                 layer: wsLegendLayer,
