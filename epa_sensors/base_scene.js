@@ -298,7 +298,7 @@ require(["esri/Map",
       // Listen to the change event for the checkbox
       wsLayerToggle.addEventListener("change", () => {
         // When the checkbox is checked (true), set the layer's visibility to true
-        wslayer.visible = wsLayerToggle.checked;
+        wsLayer.visible = wsLayerToggle.checked;
       });
 });
 
