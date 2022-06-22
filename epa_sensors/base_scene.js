@@ -27,11 +27,11 @@ require(["esri/Map",
     SimpleFillSymbol){
     // points to the states layer in a service storing U.S. census data
     const geojsonlayer = new GeoJSONLayer({
-      url: "geojson_files/region_11_counties.geojson"
+      url: "geojson_files/region_11_counties.geojson",
+      id: "Region 11 Counties"
     });
 
     geojsonlayer.opacity = 0.25;
-    geojsonlayer.id = "Region 11 Counties";
 
     geojsonlayer.renderer = new SimpleRenderer({
         symbol: new SimpleFillSymbol({
