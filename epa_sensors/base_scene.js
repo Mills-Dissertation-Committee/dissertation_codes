@@ -267,7 +267,7 @@ require(["esri/Map",
 
   // Request the weather station polygon shape data
   function getWSdata() {
-    console.log('Getting WS JSON Data!')
+
     // Data downloaded from the OpenWeatherMap on 12/4/2018.
 
     var request = new XMLHttpRequest();
@@ -282,7 +282,7 @@ require(["esri/Map",
       source: wsPoint, // autocast as an array of esri/Graphic
       // create an instance of esri/layers/support/Field for each field object
       fields: wsFields, // This is required when creating a layer from Graphics
-      objectIdField: "Weather Stations", // This must be defined when creating a layer from Graphics
+      objectIdField: "ObjectID", // This must be defined when creating a layer from Graphics
       renderer: windstationRenderer,
       popupTemplate: wsTemplate
     });
