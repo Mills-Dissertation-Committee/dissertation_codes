@@ -293,6 +293,15 @@ require(["esri/Map",
     createWSgraphics();
 });
 
+// Create a variable referencing the checkbox node
+  const wsLayerToggle = document.getElementById("wsLayer");
+
+  // Listen to the change event for the checkbox
+  wsLayerToggle.addEventListener("change", () => {
+    // When the checkbox is checked (true), set the layer's visibility to true
+    wslayer.visible = wsLayerToggle.checked;
+  });
+
   view.when(() => {
           // get the first layer in the collection of operational layers in the WebMap
           // when the resources in the MapView have loaded.
@@ -328,14 +337,6 @@ require(["esri/Map",
           // Add widget to the bottom right corner of the view
           view.ui.add(legend, "bottom-right");
 
-          // Create a variable referencing the checkbox node
-            const wsLayerToggle = document.getElementById("wsLayer");
-
-            // Listen to the change event for the checkbox
-            wsLayerToggle.addEventListener("change", () => {
-              // When the checkbox is checked (true), set the layer's visibility to true
-              wslayer.visible = wsLayerToggle.checked;
-            });
         });
 
 
