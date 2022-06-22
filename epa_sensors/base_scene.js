@@ -305,7 +305,7 @@ require(["esri/Map",
           const countiesLayer = map.layers.getItemAt(0);
           const epaMonitorLayer = map.layers.getItemAt(1);
           const paMonitorLayer = map.layers.getItemAt(2);
-          const wsLegendLayer = map.layers.id("Weather Stations");
+          const wsLegendLayer = map.wsLayer
 
           const legend = new Legend({
             view: view,
