@@ -310,8 +310,6 @@ require(["esri/Map",
           const thirdLayer = map.layers.getItemAt(2);
           const fourthLayer = map.layers.getItemAt(3);
 
-          console.log(map.layers.getItemAt(3).id)
-
           const legend = new Legend({
             view: view,
             layerInfos: [
